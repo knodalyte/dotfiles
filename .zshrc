@@ -183,6 +183,9 @@ fi
 
 zplug load
 
+autoload -U compinit && compinit
+_dotbare_completion_cmd
+
 # source $HOME/projects/fuzzy-fs/fuzzy-fs
 alias skv="sk --ansi -i -c 'rg --color=always --line-number \"{}\"' --preview '``preview.sh {}' -d':' --bind 'enter:execute($EDITOR +{2} {1})+abort'"
 alias la='command ls -la'

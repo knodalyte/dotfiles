@@ -1,0 +1,9 @@
+
+[DEFAULT]
+    editor = vim
+    # The filename extension to use for new files.
+    extension = .txt
+    # The filename extensions to recognize in the notes dir.
+    extensions = .txt, .md, .markdown, . , .rst
+    notes_dir = ~/sync/pkb
+    exclude = .stversions

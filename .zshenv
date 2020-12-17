@@ -28,3 +28,5 @@ export NVR_CMD="nvim-qt"
 export NVIM_LISTEN_ADDRESS="localhost:12345"
 
 export FUZZY_FS_TERMINAL_COMMAND="kitty"
+
+export DOTBARE_DIR="$HOME/.dotfiles.git"
