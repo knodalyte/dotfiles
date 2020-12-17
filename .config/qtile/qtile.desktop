@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=qtile
+Comment=qtile tiling window manager
+Exec=qtile
+TryExec=qtile
+Type=Application
+X-LightDM-DesktopName=qtile
+DesktopNames=qtile
+Keywords=tiling;wm;windowmanager;window;manager;
