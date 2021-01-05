@@ -1,0 +1,161 @@
+#!/bin/zsh
+#
+# Only including a shebang to trigger Sublime Text to use shell syntax highlighting
+#
+# Copyright 2006-2020 Joseph Block <jpb@unixorn.net>
+#
+# The Zsh Starter Kit allows you to replace the curated plugins list it
+# ships with with a custom one by creating a file named .zgen-local-plugins.
+#
+# This is to make it easier to customize without having to maintain a separate
+# fork of the starter kit.
+#
+# This example file duplicates the list of plugins that shipped with the
+# kit as of 2020-01-01.
+
+# ZGEN_LOADED=()
+# ZGEN_COMPLETIONS=()
+
+# if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
+#   zgen oh-my-zsh
+# fi
+
+# warn-about-prompt-change() {
+#   if [[ ! -f ~/.zsh-quickstart-kit-prompt-switch-warning ]]; then
+#     echo
+#     echo "The default ZSH prompt in the quickstart kit has changed from"
+#     echo "bullet-train to powerlevel10k."
+#     echo
+#     echo "If you want to use the old prompt, run zsh-quickstart-select-bullet-train"
+#     echo
+#     echo "Run zsh-quickstart-select-powerlevel10k to switch to the new prompt"
+#     echo
+#     echo "If you do nothing, you will be switched to powerlevel10k"
+#     echo
+#     touch ~/.zsh-quickstart-kit-prompt-switch-warning
+#   fi
+# }
+# zinit light romkatv/powerlevel10k
+# warn-about-prompt-change
+
+# If you want to customize your plugin list, create a file named
+# .zgen-local-plugins in your home directory. That file will be sourced
+# during startup *instead* of running this load-starter-plugin-list function,
+# so make sure to include everything from this function that you want to
+# keep.
+#
+# To make customizing easier, there's a .zgen-local-plugins-example file
+# at the top level of the zsh-quickstart-kit repository that you can copy
+# as a starting point. This keeps you from having to maintain a fork of
+# the quickstart kit.
+
+# If zsh-syntax-highlighting is bundled after zsh-history-substring-search,
+# they break, so get the order right.
+# zinit light zsh-users/zsh-syntax-highlighting
+# zinit light zsh-users/zsh-history-substring-search
+
+# Set keystrokes for substring searching
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# Tab complete rakefile targets.
+# zinit light unixorn/rake-completion.zshplugin
+
+# Automatically run zgen update and zgen selfupdate every 7 days.
+# zinit light unixorn/autoupdate-zgen
+
+# Add my collection of miscellaneous utility functions.
+zinit light unixorn/jpb.zshplugin
+
+# Colorize the things if you have grc installed. Well, some of the
+# things, anyway.
+zinit light unixorn/warhol.plugin.zsh
+
+# Warn you when you run a command that you've set an alias for without
+# using the alias.
+zinit light djui/alias-tips
+
+# Add my collection of git helper scripts.
+zinit light unixorn/git-extra-commands
+
+# Supercharge your history search with fzf
+zinit light unixorn/fzf-zsh-plugin
+
+# Add my bitbucket git helpers plugin.
+zinit light unixorn/bitbucket-git-helpers.plugin.zsh
+
+# A collection of scripts that might be useful to sysadmins.
+zinit light skx/sysadmin-util
+
+# Adds aliases to open your current repo & branch on github.
+zinit light peterhurford/git-it-on.zsh
+
+# Tom Limoncelli's tooling for storing private information (keys, etc)
+# in a repository securely by encrypting them with gnupg.
+zinit light StackExchange/blackbox
+
+# if [[ ! -f ~/.zsh-quickstart-no-omz ]]; then
+#   # Load some oh-my-zsh plugins
+#   zgen oh-my-zsh plugins/pip
+#   zgen oh-my-zsh plugins/sudo
+#   # zgen oh-my-zsh plugins/aws
+#   zgen oh-my-zsh plugins/chruby
+#   zgen oh-my-zsh plugins/colored-man-pages
+#   zgen oh-my-zsh plugins/git
+#   zgen oh-my-zsh plugins/github
+#   zgen oh-my-zsh plugins/python
+#   zgen oh-my-zsh plugins/rsync
+#   zgen oh-my-zsh plugins/screen
+#   # zgen oh-my-zsh plugins/vagrant
+# fi
+
+# if [ $(uname -a | grep -ci Darwin) = 1 ]; then
+#   # Load macOS-specific plugins
+#   zgen oh-my-zsh plugins/brew
+#   zgen oh-my-zsh plugins/osx
+# fi
+
+# A set of shell functions to make it easy to install small apps and
+# utilities distributed with pip.
+zinit light sharat87/pip-app
+
+zinit light chrissicool/zsh-256color
+
+# Load more completion files for zsh from the zsh-lovers github repo.
+# zinit light zsh-users/zsh-completions
+
+# Docker completion
+# zinit light srijanshetty/docker-zsh
+
+# Load me last
+GENCOMPL_FPATH=$HOME/.zsh/complete
+
+# Very cool plugin that generates zsh completion functions for commands
+# if they have getopt-style help text. It doesn't generate them on the fly,
+# you'll have to explicitly generate a completion, but it's still quite cool.
+zinit light RobSis/zsh-completion-generator
+
+# Add Fish-like autosuggestions to your ZSH.
+# zinit light zsh-users/zsh-autosuggestions
+
+# k is a zsh script / plugin to make directory listings more readable,
+# adding a bit of color and some git status information on files and
+# directories.
+zinit light supercrabtree/k
+
+zinit ice as"program" pick"fuzzy-fs"
+zinit light "SleepyBag/fuzzy-fs"
+zinit light "b4b4r07/ultimate"
+#zinit light 'b4b4r07/zgen load-doctor', lazy:yes
+#zinit light 'b4b4r07/zgen load-cd', lazy:yes
+#zinit light 'b4b4r07/zgen load-rm', lazy:yes
+zinit light 'wfxr/forgit'
+zinit light 'kazhala/dotbare'
+zinit light 'cal2195/q'
+zinit light "SleepyBag/zle-fzf"
+
+# Save it all to init script
+# zgen save
+# echo "end of .zplug-local-plugins"
+# "source ~/.zgen/SleepyBag/fuzzy-fs-master/fuzzy-fs
