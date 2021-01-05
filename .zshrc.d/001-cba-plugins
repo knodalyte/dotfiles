@@ -1,9 +1,0 @@
-# zplug "SleepyBag/fuzzy-fs", use:fuzzy-fs
-# zplug "b4b4r07/ultimate", as:theme
-# #zplug 'b4b4r07/zplug-doctor', lazy:yes
-# #zplug 'b4b4r07/zplug-cd', lazy:yes
-# #zplug 'b4b4r07/zplug-rm', lazy:yes
-# zplug 'wfxr/forgit'
-# zplug 'kazhala/dotbare'
-# zplug 'cal2195/q'
-zplug "SleepyBag/zle-fzf"
