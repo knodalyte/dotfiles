@@ -25,25 +25,25 @@
 # SOFTWARE.
 
 from typing import List  # noqa: F401
-from libqtile import bar, layout, widget, hook
+from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Screen, KeyChord, Match
 from libqtile.lazy import lazy
 from libqtile.extension import WindowList, CommandSet
 from libqtile.config import ScratchPad, DropDown
 from libqtile.utils import guess_terminal
 from libqtile.log_utils import logger
-from libqtile import qtile
 # from libqtile.config import EzKey as Key
 import os
 import subprocess
-
+import psutil
 
 mod = "mod4"
 alt = "mod1"
 ctrl = "control"
 
-terminal = 'kitty' # guess_terminal()
 home = os.path.expanduser("~")
+local_bin = home + "/.local/bin"
+terminal = 'kitty' # guess_terminal()
 
 # Color set for solarized dark colors
 base03 = "#002b36"
@@ -77,40 +77,52 @@ green = "#859900"
 #     except IndexError:
 #         pass
 
+@hook.subscribe.client_new
+def set_parent(window):
+    client_by_pid = {}
+    for client in qtile.windows_map.values():
+        client_pid = client.window.get_net_wm_pid()
+        client_by_pid[client_pid] = client
+
+    pid = window.window.get_net_wm_pid()
+    ppid = psutil.Process(pid).ppid()
+    while ppid:
+        window.parent = client_by_pid.get(ppid)
+        if window.parent:
+            return
+        ppid = psutil.Process(ppid).ppid()
+
+
+@hook.subscribe.client_new
+def swallow(window):
+    if window.parent:
+        window.parent.minimized = True
+
+
+@hook.subscribe.client_killed
+def unswallow(window):
+    if window.parent:
+        window.parent.minimized = False
 
 @hook.subscribe.screen_change
-# def set_screens(event, qtile):
 def set_screens(event):
-    # from libqtile import qtile
     logger.debug("Handling event: {}".format(event))
-    # subprocess.run(["autorandr", "--change"])
-    # qtile.cmd_restart()
-    # qtile.restart()
-# @hook.subscribe.screen_change
-# def restart_on_randr(ev):
-#     lazy.restart()
-#     # qtile.cmd_restart()
-#     # logger.warning("restarted qtile from screen_change hook")
-#     # lazy.restart()
-#     # # qtile.cmd_restart()
-#     # logger.warning("restarted qtile again from screen_change hook")
+    subprocess.run(["autorandr", "--change"])
+    qtile.restart()
 
 @hook.subscribe.startup_once
 def start_once():
     subprocess.Popen(["autorandr", "--change"])
-    home = os.path.expanduser("~")
     subprocess.Popen(["xsetroot", "-cursor_name", "left_ptr"])
-    subprocess.call(["cbastart"])
-    # lazy.spawn("nitrogen --set-auto --random")
-    # lazy.spawn("tint2")
-    # subprocess.Popen([home + "/.config/common/tray_appsq.sh"])
-    subprocess.run([home + "/.config/common/tray_appsq.sh"])
+    subprocess.Popen(["/bin/sh", home + "/.config/common/tray_appsq.sh"])
+    subprocess.Popen([home + "/.config/qtile/scripts/autostart.sh"])
     # subprocess.call([home + "/.config/qtile/scripts/autostart.sh"])
 
 @hook.subscribe.startup_complete
 def start_apps():
+    subprocess.Popen(["autorandr", "--change"])
     # subprocess.call([home + "/.config/common/setting.sh"])
-    # subprocess.run(["autorandr", "--change"])
+    # subprocess.run(["cbastart"])
     pass
 
 @hook.subscribe.startup
@@ -119,6 +131,7 @@ def start_always():
     # subprocess.run("xsetroot -cursor_name left_ptr")
     # subprocess.Popen(["xsetroot", "-cursor_name", "left_ptr"])
     subprocess.run([home + "/.config/common/setting.sh"])
+    subprocess.Popen(["autorandr", "--change"])
     pass
 
 def window_to_previous_screen(qtile):
@@ -213,6 +226,12 @@ keys = [
     ##**Theme.dmenu
     #)))
 
+    # KeyChord([mod], "s", [
+    #     Key([], "e", lazy.spawn("/home/cba/.screenlayout/cbave.sh")),
+    #     Key([], "h", lazy.spawn("/home/cba/.screenlayout/cbavh.sh")),
+    #     Key([], "d", lazy.spawn("/home/cba/.screenlayout/cbavd.sh")),
+    # ]),
+
     ### Switch focus to specific monitor  AKA screen (out of three)
     Key([mod, alt], "1", lazy.to_screen(0), desc="Keyboard focus to monitor 1"),
     Key([mod, alt], "2", lazy.to_screen(1), desc="Keyboard focus to monitor 2"),
@@ -265,25 +284,42 @@ keys = [
     Key([mod], "minus", lazy.layout.toggle_split()),
 
     # window layout
-    Key([mod], "f", lazy.window.toggle_fullscreen()),
+    # use F11 for fullscreen
+    # Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "m", lazy.window.toggle_maximize()),
-    Key([mod], "s", lazy.window.toggle_floating()),
+    Key([mod], "f", lazy.window.toggle_floating()),
     # Key([mod], "m", lazy.group.setlayout('max'))
     Key([mod], "space", lazy.next_layout(), desc="Toggle through layouts"              ),
 
+    #Key([mod, 'control'], 'x', lazy.run_extension(CommandSet(
+    #commands={
+    #    'shutdown': 'systemctl poweroff',
+    #    'reboot': 'systemctl reboot',
+    #    'suspend': 'systemctl suspend',
+    #    'hibernate': 'systemctl hibernate',  # NOTE: A few things need to be set up in advance for this to work.
+    #    'logout': 'loginctl terminate-session $XDG_SESSION_ID',
+    #    'switch user': 'dm-tool switch-to-greeter',  # "dm-tool" is probably part of something other than systemd
+    #    'lock': 'loginctl lock-session',
+    #},
+    #dmenu_prompt='session>',
+    ## **dmenu_theme  # you can just leave this out if you don't have your own dmenu-theme
+#)), desc='List options to quit the session.'),
+
     Key([mod], 'a', lazy.run_extension(CommandSet(
-    commands={
-        'displayport': 'autorandr -l Displayport',
-        'default': "autorandr --change",
-        'hdmi': 'autorandr -l HDMI',
-        'edp': 'autorandr -l eDP',
-        'both': 'autorandr -l Displayport-eDP',
-        'famm2': 'autorandr -l HDMI-eDP',
-        "period": 'qtile cmd-obj -o screen -f next_group',
-        },
-    # pre_commands=['[ $(mocp -i | wc -l) -lt 1 ] && mocp -S'],
+        commands={
+            'displayport': home + '/.screenlayout/d.sh',
+            'hdmi': home + '/.screenlayout/h.sh',
+            'edp': home + '/.screenlayout/e.sh',
+            '2edp/displayport': home + '/.screenlayout/ed.sh',
+            '3displayport/edp': home + '/.screenlayout/de.sh',
+            '4hdmi/edp': home + '/.screenlayout/he.sh',
+            '5edp/hdmi': home + '/.screenlayout/eh.sh',
+            },
+        dmenu_prompt='display>',
+        # dmenu_command = 'rofi',
+        # pre_commands=['AUTORANDR_PROFILE_FOLDER=/home/cba/.config/autorandr'],
     #**Theme.dmenu
-    ))),
+    )), desc='List monitors to activate'),
 
     # Swap panes of split stack
     Key([mod, "shift"], "space", lazy.layout.rotate()),
@@ -297,8 +333,15 @@ keys = [
     Key([mod], "Return", lazy.spawn("kitty")),
     Key([mod], "KP_Enter", lazy.spawn("kitty")),
     Key([mod], "o", lazy.spawn("kitty ranger")),
+    Key([mod], "c", lazy.spawn("kitty clipcat-menu insert")),
+    # Key([mod], "c", lazy.spawn("clipmenu")),
+    # as set up by arandr:
+    # Key([mod], "apostrophe", lazy.spawn("/home/cba/.screenlayout/cbave.sh")),
+    # Key([mod], "bracketleft", lazy.spawn('/home/cba/.screenlayout/cbavh.sh')),
+    # Key([mod], "bracketright", lazy.spawn('/home/cba/.screenlayout/cbavd.sh')),
     # Key("M-S-a", callback, ...),
     Key([mod], "z", lazy.spawn("rofi -combi-modi window#run#drun -show combi -modi combi")),
+    Key([mod], "j", lazy.spawn("jgmenu_run")),
     Key([mod], "semicolon", lazy.spawn("rofi -combi-modi window#run#drun -show combi -modi combi")),
     Key([mod], "d", lazy.spawn("rofi -show drun -run-shell-command")),
     # Key([mod, ctrl], "d", lazy.spawn("rofi -show drun -run-command 'pkexec /usr/sbin/{cmd}'")),
@@ -440,6 +483,7 @@ def init_colors():
 colors = init_colors()
 
 widget_defaults = dict(
+    # font="Monoisome Tight",
     font="Andika Compact",
     fontsize=16,
     padding=3,
@@ -480,17 +524,17 @@ screens = [
             widget.Prompt(),
             # widget.Notify(iconsize=24),
             # widget.Net(format = "{down} ↓↑ {up}", foreground = blue),
-            widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
+            # widget.Chord(
+                    # chords_colors={
+                    #     'launch': ("#ff0000", "#ffffff"),
+                    # },
+                    # name_transform=lambda name: name.upper(),
+                # ),
             widget.NetGraph(type="line", width=50, graph_color=blue, samples=50),
             widget.CPUGraph(type="line", width=50, graph_color=yellow, samples=50),
             # widget.Wlan(),
             # widget.CPU(format = "{freq_current}G {load_percent}%  ", foreground = yellow),
-            widget.Systray(padding=0, icon_size=20),
+            widget.Systray(padding=1, icon_size=22),
             # widget.Clock(format="  %a %e %b %l:%M:%S", fontsize=16),
             widget.Clock(format="  %a %e %b %l:%M:%S", fontsize=16, mouse_callbacks={'Button1': open_calendar}),
                 # widget.CurrentLayout(),

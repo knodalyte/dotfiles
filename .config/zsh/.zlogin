@@ -1,3 +1,3 @@
 #/usr/bin/keychain --agents ssh,gpg id_rsa id_ed25519
 #[[ -f ~/.keychain/mateux.local-sh ]] && source ~/.keychain/mateux.local-sh
-eval `keychain --eval id_rsa id_ed25519'
+eval `keychain --agents ssh,gpg --eval id_rsa id_ed25519`

@@ -463,7 +463,7 @@ if has('vim_starting')
 
 " writing aids {{{2
     Plug 'ajh17/VimCompletesMe'
-    Plug 'ap/vim-buftabline'
+    " Plug 'ap/vim-buftabline'
     "*" "Plug 'bronson/vim-trailing-whitespace'
     "*" "Plug 'chemzqm/denite-extra'
     "*" "Plug 'chemzqm/unite-location'
@@ -649,13 +649,15 @@ if has('vim_starting')
 
 "*" utilities {{{2
     " Plug 'francoiscabrol/ranger.vim'
-    Plug 'kevinhwang91/rnvimr'
-    " Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+    " Plug 'kevinhwang91/rnvimr'
+    Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
     " Plug 'ipod825/vim-netranger'
     " Plug 'rafaqz/ranger.vim'
     Plug 'mbbill/undotree'
+    Plug 'mg979/vim-xtabline'
     Plug 'mhinz/vim-hugefile'
     Plug 'mhinz/vim-startify'
+    Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
     " if has('nvim')
     "     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " else
@@ -1165,7 +1167,11 @@ inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
 " copy text to "+ (clipboard)
 vmap <Leader>y "+y
-" paste text from "+ (clipboard)
+" CTRL-R * will insert in the contents of the clipboard
+" CTRL-R " (the unnamed register) inserts the last delete or yank.
+        " paste text from "+ (clipboard)
+inoremap <Leader>p <ESC>pa
+inoremap <Leader>P <ESC>Pa
 nnoremap <Leader>p "+p
 vnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
@@ -1273,9 +1279,9 @@ nmap <leader>xwm5 :%s/^== \(.*\)==/## \1/gc
 nmap <leader>xwm6 :%s/^= \(.*\)=/# \1/gc
 
 nnoremap <Leader>u :UndotreeToggle<CR>
-inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
-snoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xnoremap <C-k>     <Plug>(neosnippet_expand_target)
+" inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" snoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xnoremap <C-k>     <Plug>(neosnippet_expand_target)
 "
 " Fugitive {
 nnoremap <silent> <leader>gs :Gstatus
@@ -1580,7 +1586,8 @@ let g:pymode_breakpoint = 0
 " let g:pymode_breakpoint_cmd = ''
 "
 
-let g:startify_list_order = ['bookmarks', ['sessions:'],'sessions', 'files', 'dir', ['commands:'], 'commands']
+let g:startify_list_order = ['bookmarks', ['sessions:'],'sessions', 'files', ['commands:'], 'commands']
+" let g:startify_list_order = ['bookmarks', ['sessions:'],'sessions', 'files', 'dir', ['commands:'], 'commands']
 let g:startify_bookmarks = ['~/.vimrc', '~/sync/pkb/systems/ref_vim_cheatsheet.txt', '~/sync/pkb/todo.txt']
 let g:startify_update_oldfiles = 1
 let g:startify_change_to_dir = 1
@@ -1603,7 +1610,7 @@ let g:vc_log_name="~/vclog.txt"
 let python_highlight_all = 1
 
 "let g:deoplete#enable_at_startup = 1
-let g:neosnippet#snippets_directory='~/.vim/cbasnippets'
+" let g:neosnippet#snippets_directory='~/.vim/cbasnippets'
 " Use deoplete.
 
 " Use smartcase.
@@ -1759,9 +1766,9 @@ nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(-1)
 
 " " " Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"   let g:neocomplete#sources#omni#input_patterns = {}
+" endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
@@ -1771,11 +1778,11 @@ endif
 
 " end of Shougo's config from readme
 " snippets / neosnippet {{{2
-let g:neosnippet#snippets_directory='~/.vim/cbasnippets'
+" let g:neosnippet#snippets_directory='~/.vim/cbasnippets'
 " disable default snippets:
-let g:neosnippet#disable_runtime_snippets = {'_' : 1,}
+" let g:neosnippet#disable_runtime_snippets = {'_' : 1,}
 
-" Enable neosnippet snipmate compatibility mode
+" " Enable neosnippet snipmate compatibility mode
 " let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Recommended key-mappings.
@@ -1835,30 +1842,30 @@ endif
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 
-" neocomplete {{{2
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"" neocomplete {{{2
+""Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+"" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+"" Use neocomplete.
+"let g:neocomplete#enable_at_startup = 1
+"" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+"" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {'default' : '', 'vimshell' : $HOME.'/.vimshell_hist'}
+"" Define dictionary.
+"let g:neocomplete#sources#dictionary#dictionaries = {'default' : '', 'vimshell' : $HOME.'/.vimshell_hist'}
 
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+"    let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Plugin key-mappings.
-" inoremap <expr><C-g>     neocomplete#undo_completion()
-" inoremap <expr><C-l>     neocomplete#complete_common_string()
+"" Plugin key-mappings.
+"" inoremap <expr><C-g>     neocomplete#undo_completion()
+"" inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " SnipMate {
 " Setting the author var
@@ -2374,7 +2381,8 @@ let g:rnvimr_ex_enable = 1
 " Make Ranger to be hidden after picking a file
 let g:rnvimr_pick_enable = 1
 
-let g:nv_search_paths = ['~/sync/pkb', ]
+let g:nv_search_paths = ['.', ]
+" let g:nv_search_paths = ['~/sync/pkb', ]
 let g:nv_default_extension = '.txt'
 let g:nv_create_note_window = 'tabedit'
 let g:nv_ignore_pattern = ['*.sqlite*', '*_']

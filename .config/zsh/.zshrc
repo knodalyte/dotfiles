@@ -31,23 +31,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+autoload -Uz compinit promptinit
+compinit
+promptinit
+
 #
 # zinit has a wide range of options for optimizing performance. If you notice the plugin impacting the performance of new terminals, and if you don't need the plugin to be available the moment you're able to type at a prompt, a good place to start is
 
 # zinit ice wait lucid
 # zinit light <owner>/<repo>
 
-# That will silently delay loading the plugin until after the shell has started up.# Set this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-#
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-#
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-#
-# Version 0.7
-
+# That will silently delay loading the plugin until after the shell has started up.
 # echo "line 22"
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -62,27 +56,6 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
-
-#####################
-# PROMPT            #
-#####################
- # zinit ice lucid atinit'fpath+=($PWD/functions.zwc $PWD/functions ${XDG_DATA_HOME:-${HOME}/.local/share}/apollo $PWD/modules.zwc $PWD/modules)'
- # zinit light mjrafferty/apollo-zsh-theme
- # APOLLO_THEME=powerline
- # zstyle ':apollo:*:core:modules:right' modules 'vi_mode command_execution_time' 'background_jobs' 'date' 'clock' 'status' 'newline'
- # zstyle ':apollo:*:*:*:context:*' ignore_users ".*cba.*"
- # zstyle ':apollo:*:*:*:vi_mode:*' fg_color "white"
- # zstyle ':apollo:*:*:*:vi_mode:*' bg_color "grey30"
- # zstyle ':apollo:*:*:*:vi_mode:insert:mode' text "INSERT"
- # zstyle ':apollo:*:*:*:vi_mode:visual:mode' text "VISUAL"
- # zstyle ':apollo:*:*:*:vi_mode:normal:mode' text "NORMAL"
- # zstyle ':apollo:*:*:*:vi_mode:replace:mode' text "REPLACE"
-# zstyle ':apollo:*:core:modules:left' modules 'git newline vi_mode root_indicator context dir ruler'
-
-# zstyle ':apollo:*:*:*:vi_mode:*' '(insert|normal|replace|visual):main '
-# zinit lucid for \
-#     as"command" from"gh-r" atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' atload'eval "$(starship init zsh)"' bpick'*unknown-linux-gnu*' \
-#     starship/starship \
 
 ##########################
 # OMZ Libs and Plugins   #
@@ -213,7 +186,245 @@ zinit wait lucid for \
     # atpull'%atclone' pick"c.zsh" nocompile'!' \
     # atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”' \
     #     trapd00r/LS_COLORS
-                    #
+    #
+# load to use https://github.com/NICHOLAS85/z-a-linkbin ice mods to symlink executablesO
+# zinit light NICHOLAS85/z-a-linkbin
+
+# echo "line 277"
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+# zinit light-mode for \
+#     zinit-zsh/z-a-rust \
+#     zinit-zsh/z-a-as-monitor \
+#     zinit-zsh/z-a-patch-dl \
+#     zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+#
+# source ~/.p10k.zsh
+# source $ZDOTDIR/.zinit-local-plugins
+
+# zinit light zinit-zsh/z-a-man
+
+zinit light zdharma/zui
+zinit light zdharma/zplugin-crasis
+
+CRASIS_THEME="zdharma-256" CRASIS_LAYOUT="contract" 
+#
+# fzf-tab needs to be loaded after compinit, but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting.
+# https://github.com/Aloxaf/fzf-tab - great plugin!
+zinit light Aloxaf/fzf-tab
+
+# Utilize Turbo and initialize the completion system
+zinit wait pack atload=+"zicompinit; zicdreplay" for system-completions
+#
+# zinit light zinit-zsh/z-a-readurl
+zinit wait lucid for zinit-zsh/zinit-console
+# zinit for annexes zsh-users+fast zdharma
+# Fast-syntax-highlighting & autosuggestions
+# zinit wait lucid for \
+#  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
+#     zdharma/fast-syntax-highlighting \
+#  atload"!_zsh_autosuggest_start" \
+#     zsh-users/zsh-autosuggestions \
+#  blockf \
+#     zsh-users/zsh-completions
+
+# Option B – a load with Turbo-Mode being in use
+# zplugin ice wait'0' lucid atload'zsh-startify'
+# zplugin load zdharma/zsh-startify
+
+
+# zinit ice wait'!0' 
+# zinit light denysdovhan/spaceship-prompt
+# zinit load reobin/typewritten
+
+# prompt typewritten
+
+# zinit ice wait'!0' 
+# zinit load halfo/lambda-mod-zsh-theme
+# zinit wait lucid for \
+#         OMZL::git.zsh \
+#   atload"unalias grv" \
+#         OMZP::git
+# zinit wait'!' lucid for \
+#     OMZL::prompt_info_functions.zsh \
+#     OMZT::gnzh
+#
+# Two regular plugins loaded without investigating.
+# Fish-like auto suggestions
+# zinit light zsh-users/zsh-autosuggestions
+# zinit light zdharma/fast-syntax-highlighting
+
+# Plugin history-search-multi-word loaded with investigating.
+# zinit load zdharma/history-search-multi-word
+# not needed due to fzf-tab handling search
+# zinit load zsh-users/zsh-history-substring-search
+
+
+# Extra zsh completions
+# zinit light zsh-users/zsh-completions
+
+# Optional: compile source files into bytecode to speed up init
+# zinit ice pick'spacezsh.zsh' \
+#   compile'{presets/^(*.zwc),lib/**/^(*.zwc),sections/^(*.zwc)}'
+# zinit light laggardkernel/spacezsh-prompt
+# zinit light rkoder/clarity.zsh
+
+# ZSH_THEME="lighthaus.zsh-theme"
+# zinit load agkozak/zsh-z
+# . ~/.oh-my-zsh/plugins/z/z.sh
+
+# Tab complete rakefile targets.
+# zinit light unixorn/rake-completion.zshplugin
+
+# Automatically run zgen update and zgen selfupdate every 7 days.
+# zinit light unixorn/autoupdate-zgen
+
+# Add my collection of miscellaneous utility functions.
+# zinit light unixorn/jpb.zshplugin
+
+# Colorize the things if you have grc installed. Well, some of the
+# things, anyway.
+# zinit light unixorn/warhol.plugin.zsh
+
+# Warn you when you run a command that you've set an alias for without
+# using the alias.
+# redundant with plugin below that works with abbrev-alias plugin
+# zinit light djui/alias-tips
+
+# Add my collection of git helper scripts.
+# zinit light unixorn/git-extra-commands
+
+# Supercharge your history search with fzf
+# zinit light unixorn/fzf-zsh-plugin
+
+# Add my bitbucket git helpers plugin.
+# zinit light unixorn/bitbucket-git-helpers.plugin.zsh
+
+# A collection of scripts that might be useful to sysadmins.
+# zinit light skx/sysadmin-util
+
+# Adds aliases to open your current repo & branch on github.
+# zinit light peterhurford/git-it-on.zsh
+
+# Tom Limoncelli's tooling for storing private information (keys, etc)
+# in a repository securely by encrypting them with gnupg.
+# zinit light StackExchange/blackbox
+
+# A set of shell functions to make it easy to install small apps and
+# utilities distributed with pip.
+zinit light sharat87/pip-app
+
+zinit light chrissicool/zsh-256color
+
+# Load more completion files for zsh from the zsh-lovers github repo.
+# zinit light zsh-users/zsh-completions
+
+# Docker completion
+# zinit light srijanshetty/docker-zsh
+
+# Very cool plugin that generates zsh completion functions for commands
+# if they have getopt-style help text. It doesn't generate them on the fly,
+# you'll have to explicitly generate a completion, but it's still quite cool.
+zinit light RobSis/zsh-completion-generator
+
+# Add Fish-like autosuggestions to your ZSH.
+# zinit light zsh-users/zsh-autosuggestions
+
+# k is a zsh script / plugin to make directory listings more readable,
+# adding a bit of color and some git status information on files and
+# directories.
+zinit light supercrabtree/k
+
+# find files in subtree:
+# zinit ice as"command" from"gh-r" pick"fuzzy-fs"
+# zinit ice as"program" pick"fuzzy-fs"
+# zinit light "SleepyBag/fuzzy-fs"
+# source /home/cba/.zinit/plugins/SleepyBag---fuzzy-fs/fuzzy-fs
+zinit light 'wfxr/forgit'
+zinit light 'kazhala/dotbare'
+zinit light 'cal2195/q'
+# zinit light "SleepyBag/zle-fzf"
+# can't handle single quotes, parens, etc:
+# zinit light 'jameshgrn/zshnotes'
+zinit light 'aperezdc/zsh-notes'
+# Ctrl-N: Open the notes selector.
+bindkey '^[n' notes-edit-widget
+# If unset, ~/Notes is used as default.
+zstyle :notes home  'sync/pkb/inbox'
+
+# When set, exits the notes widget after one use.
+zstyle :notes:widget once no
+
+# Choose the picker used by the widget. Supported values: fzf, skim, fzy.
+zstyle :notes:widget picker fzf
+
+# When using fzf or skim it's possible to show a side panel with a preview of the notes. The cat command is used by default, but any program that can render Markdown to ANSI terminal escapes should do (for example mdcat and lowdown are known to work well):
+
+# Enable preview panel. Disabled by default.
+zstyle :notes:widget:preview enabled yes
+
+# The default is "cat", but can be any command that renders to ANSI escapes:
+# zstyle :notes:widget:preview command lowdown -Tterm
+
+# Alternative using mdcat:
+zstyle :notes:widget:preview command mdcat -l
+zle && { zle reset-prompt; zle -R }
+# https://github.com/olets/zsh-abbr
+zinit light 'MichaelAquilina/zsh-you-should-use'
+zinit light "momo-lab/zsh-abbrev-alias"
+# zinit light 'olets/zsh-abbr'
+# "note sometext" notes go into /home/cba/Documents/zshnote
+# zinit ice lucid wait"1" pick"fz.sh"
+# zinit load halfo/lambda-mod-zsh-theme
+# zinit load 'changyuheng/fz'
+# zinit wait'1' lucid light-mode for pick"z.sh" "knu/z" 
+# zinit light "rupa/z"
+# zinit load "knu/z" 
+
+# Add to .zshrc, before this plugin is loaded:
+# Use Control-D instead of Escape to switch to NORMAL mode
+# VIM_MODE_VICMD_KEY='^D'
+# https://github.com/softmoth/zsh-vim-mode
+zinit load 'softmoth/zsh-vim-mode'
+# cursor configurations for zsh-vim-mode
+MODE_CURSOR_VICMD="green block"
+MODE_CURSOR_VIINS="#20d08a blinking bar"
+MODE_CURSOR_SEARCH="#ff00ff blinking underline"
+###
+#
+# mode configuration for zsh-vim-mode, shown on the right (RPS1 stuff)
+# MODE_INDICATOR_VIINS='%F{15}<%F{8}INSERT<%f'
+# MODE_INDICATOR_VICMD='%F{10}<%F{2}NORMAL<%f'
+# MODE_INDICATOR_REPLACE='%F{9}<%F{1}REPLACE<%f'
+# MODE_INDICATOR_SEARCH='%F{13}<%F{5}SEARCH<%f'
+# MODE_INDICATOR_VISUAL='%F{12}<%F{4}VISUAL<%f'
+# MODE_INDICATOR_VLINE='%F{12}<%F{4}V-LINE<%f'
+
+# Make it work with your existing RPS1 if it is set. Note the single quotes
+# setopt PROMPT_SUBST
+# RPS1='${MODE_INDICATOR_PROMPT} ${vcs_info_msg_0_}'
+#bindkey -rpM viins '^[^['
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# zsh-startify, a vim-startify like plugin
+# zinit wait"0b" lucid atload"zsh-startify" for zdharma/zsh-startify
+
+# A simple zsh plugin that replaces Ctrl+R with an fzf-driven that includes date/times. 
+# maybe redundant with hstr?
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
+
+# set terminal window title with pwd and command name - uses history so new term windows have prior command...
+zinit light mdarocha/zsh-windows-title
+
+# zsh fuzzy marks - create lists of favorite files and directories and insert into commandline using fzf: ^o
+# needs fzf key bindings else shows error (but works)
+zinit light pabloariasal/zfm
+
+### end of zinit loading and setup #######################################################
+#
 # Correct spelling for commands
 setopt correct
 
@@ -244,6 +455,8 @@ setopt CDABLE_VARS          # Change directory to a path stored in a variable.
 
 # autoload -Uz bd; bd
 
+# bindkey '^[OA' history-substring-search-up
+# bindkey '^[OB' history-substring-search-down
 # +---------+
 # | HISTORY |
 # +---------+
@@ -436,47 +649,19 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 # fi
 # echo "line 263"
 
-# load to use https://github.com/NICHOLAS85/z-a-linkbin ice mods to symlink executablesO
-# zinit light NICHOLAS85/z-a-linkbin
-
-# echo "line 277"
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-# zinit light-mode for \
-#     zinit-zsh/z-a-rust \
-#     zinit-zsh/z-a-as-monitor \
-#     zinit-zsh/z-a-patch-dl \
-#     zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
-#
-# source ~/.p10k.zsh
-# source $ZDOTDIR/.zinit-local-plugins
-
-# zinit light zinit-zsh/z-a-man
-
-zinit light zdharma/zui
-zinit light zdharma/zplugin-crasis
-
-CRASIS_THEME="zdharma-256" CRASIS_LAYOUT="contract" 
 alias mm=moreman
 
 # echo "line 299"
-# User configuration
-autoload -Uz compinit promptinit
-compinit
-promptinit
-
-# fzf-tab needs to be loaded after compinit, but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting.
-# https://github.com/Aloxaf/fzf-tab - great plugin!
-zinit light Aloxaf/fzf-tab
 zstyle ":completion:*:git-checkout:*" sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 # zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
-export KEYTIMEOUT=1
+# export KEYTIMEOUT=1
+# this value can not be too low, or it will break the surround object of
+# plugin zsh-vim-mode, see https://github.com/zsh-users/zsh-autosuggestions/issues/254
+export KEYTIMEOUT=30
 # export MANPATH="/usr/local/man:$MANPATH"
 # cursor_mode() {
 #     # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursor shapes
@@ -558,6 +743,8 @@ ZPLUG_PROTOCOL=ssh
 # echo "line 382"
 # source $HOME/projects/fuzzy-fs/fuzzy-fs
 alias skv="sk --ansi -i -c 'rg --color=always --line-number \"{}\"' --preview '``preview.sh {}' -d':' --bind 'enter:execute($EDITOR +{2} {1})+abort'"
+alias skl="sk --ansi -i -c 'rg --color=always -l --count --hidden \"{}\"' --preview '``preview.sh {}' -d':' --bind 'enter:execute($EDITOR +{2} {1})+abort'"
+# alias fzv="rg --color=always --line-number \"{}\"|fzf --preview '``preview.sh {}' -d':' --bind 'enter:execute($EDITOR +{2} {1})+abort'"
 alias la='command ls -la'
 alias ll='command ls -l'
 alias lh='command ls -hAl'
@@ -576,9 +763,6 @@ bashcompinit
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 # (( ! ${+functions[p10k]} )) || p10k finalize
 #
-# Utilize Turbo and initialize the completion system
-zinit wait pack atload=+"zicompinit; zicdreplay" for system-completions
-#
 # Load any custom zsh completions we've installed
 if [ -d ~/.zsh-completions ]; then
   for completion in ~/.zsh-completions/*
@@ -587,185 +771,46 @@ if [ -d ~/.zsh-completions ]; then
   done
 fi
 # echo "line 414"
-# zinit light zinit-zsh/z-a-readurl
-zinit wait lucid for zinit-zsh/zinit-console
-# zinit for annexes zsh-users+fast zdharma
-# Fast-syntax-highlighting & autosuggestions
-# zinit wait lucid for \
-#  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
-#     zdharma/fast-syntax-highlighting \
-#  atload"!_zsh_autosuggest_start" \
-#     zsh-users/zsh-autosuggestions \
-#  blockf \
-#     zsh-users/zsh-completions
-
-# Option B – a load with Turbo-Mode being in use
-# zplugin ice wait'0' lucid atload'zsh-startify'
-# zplugin load zdharma/zsh-startify
 
 setopt prompt_subst
 setopt promptsubst
-# zinit ice wait'!0' 
-# zinit light denysdovhan/spaceship-prompt
-# zinit load reobin/typewritten
 autoload -U promptinit; promptinit
-# prompt typewritten
-
-# zinit ice wait'!0' 
-# zinit load halfo/lambda-mod-zsh-theme
-# zinit wait lucid for \
-#         OMZL::git.zsh \
-#   atload"unalias grv" \
-#         OMZP::git
-# zinit wait'!' lucid for \
-#     OMZL::prompt_info_functions.zsh \
-#     OMZT::gnzh
-#
-# Two regular plugins loaded without investigating.
-# Fish-like auto suggestions
-# zinit light zsh-users/zsh-autosuggestions
-# zinit light zdharma/fast-syntax-highlighting
-
-# Plugin history-search-multi-word loaded with investigating.
-# zinit load zdharma/history-search-multi-word
-zinit load zsh-users/zsh-history-substring-search
-
-
-# Extra zsh completions
-# zinit light zsh-users/zsh-completions
-
-# Optional: compile source files into bytecode to speed up init
-# zinit ice pick'spacezsh.zsh' \
-#   compile'{presets/^(*.zwc),lib/**/^(*.zwc),sections/^(*.zwc)}'
-# zinit light laggardkernel/spacezsh-prompt
-# zinit light rkoder/clarity.zsh
-
-# ZSH_THEME="lighthaus.zsh-theme"
-# zinit load agkozak/zsh-z
-# . ~/.oh-my-zsh/plugins/z/z.sh
-
 # Set keystrokes for substring searching
 zmodload zsh/terminfo
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
 # bindkey "$terminfo[kcuu1]" history-substring-search-up
 # bindkey "$terminfo[kcud1]" history-substring-search-down
-# Tab complete rakefile targets.
-# zinit light unixorn/rake-completion.zshplugin
-
-# Automatically run zgen update and zgen selfupdate every 7 days.
-# zinit light unixorn/autoupdate-zgen
-
-# Add my collection of miscellaneous utility functions.
-# zinit light unixorn/jpb.zshplugin
-
-# Colorize the things if you have grc installed. Well, some of the
-# things, anyway.
-# zinit light unixorn/warhol.plugin.zsh
-
-# Warn you when you run a command that you've set an alias for without
-# using the alias.
-zinit light djui/alias-tips
-
-# Add my collection of git helper scripts.
-# zinit light unixorn/git-extra-commands
-
-# Supercharge your history search with fzf
-# zinit light unixorn/fzf-zsh-plugin
-
-# Add my bitbucket git helpers plugin.
-# zinit light unixorn/bitbucket-git-helpers.plugin.zsh
-
-# A collection of scripts that might be useful to sysadmins.
-# zinit light skx/sysadmin-util
-
-# Adds aliases to open your current repo & branch on github.
-# zinit light peterhurford/git-it-on.zsh
-
-# Tom Limoncelli's tooling for storing private information (keys, etc)
-# in a repository securely by encrypting them with gnupg.
-# zinit light StackExchange/blackbox
-
-# A set of shell functions to make it easy to install small apps and
-# utilities distributed with pip.
-# zinit light sharat87/pip-app
-
-zinit light chrissicool/zsh-256color
-
-# Load more completion files for zsh from the zsh-lovers github repo.
-# zinit light zsh-users/zsh-completions
-
-# Docker completion
-# zinit light srijanshetty/docker-zsh
-
 # Load me last
 GENCOMPL_FPATH=$HOME/.zsh/complete
 
-# Very cool plugin that generates zsh completion functions for commands
-# if they have getopt-style help text. It doesn't generate them on the fly,
-# you'll have to explicitly generate a completion, but it's still quite cool.
-zinit light RobSis/zsh-completion-generator
+abbrev-alias zzz='exit'
+abbrev-alias ka='k -all '
+abbrev-alias aba='abbrev-alias '
 
-# Add Fish-like autosuggestions to your ZSH.
-# zinit light zsh-users/zsh-autosuggestions
-
-# k is a zsh script / plugin to make directory listings more readable,
-# adding a bit of color and some git status information on files and
-# directories.
-zinit light supercrabtree/k
-
-zinit ice as"command" from"gh-r" pick"fuzzy-fs"
-# zinit ice as"program" pick"fuzzy-fs"
-zinit light "SleepyBag/fuzzy-fs"
-source /home/cba/.zinit/plugins/SleepyBag---fuzzy-fs/fuzzy-fs
-# zinit light "b4b4r07/ultimate"
-#zinit light 'b4b4r07/zgen load-doctor', lazy:yes
-#zinit light 'b4b4r07/zgen load-cd', lazy:yes
-#zinit light 'b4b4r07/zgen load-rm', lazy:yes
-zinit light 'wfxr/forgit'
-zinit light 'kazhala/dotbare'
-zinit light 'cal2195/q'
-# zinit light "SleepyBag/zle-fzf"
-zinit light 'jameshgrn/zshnotes'
-# https://github.com/olets/zsh-abbr
-zinit light 'MichaelAquilina/zsh-you-should-use'
-zinit light "momo-lab/zsh-abbrev-alias"
-# zinit light 'olets/zsh-abbr'
-# "note sometext" notes go into /home/cba/Documents/zshnote
-# zinit ice lucid wait"1" pick"fz.sh"
-# zinit load halfo/lambda-mod-zsh-theme
-# zinit load 'changyuheng/fz'
-# zinit wait'1' lucid light-mode for pick"z.sh" "knu/z" 
-# zinit light "rupa/z"
-# zinit load "knu/z" 
-abbrev-alias zzz=exit
-
+### vim mode in zsh
 bindkey -v
-# Add to .zshrc, before this plugin is loaded:
-# Use Control-D instead of Escape to switch to NORMAL mode
-# https://github.com/softmoth/zsh-vim-mode
-zinit load 'softmoth/zsh-vim-mode'
-# cursor configurations for zsh-vim-mode
-MODE_CURSOR_VICMD="green block"
-MODE_CURSOR_VIINS="#20d08a blinking bar"
-MODE_CURSOR_SEARCH="#ff00ff blinking underline"
-
-# mode configuration for zsh-vim-mode, shown on the right (RPS1 stuff)
-# MODE_INDICATOR_VIINS='%F{15}<%F{8}INSERT<%f'
-# MODE_INDICATOR_VICMD='%F{10}<%F{2}NORMAL<%f'
-# MODE_INDICATOR_REPLACE='%F{9}<%F{1}REPLACE<%f'
-# MODE_INDICATOR_SEARCH='%F{13}<%F{5}SEARCH<%f'
-# MODE_INDICATOR_VISUAL='%F{12}<%F{4}VISUAL<%f'
-# MODE_INDICATOR_VLINE='%F{12}<%F{4}V-LINE<%f'
-
-# Make it work with your existing RPS1 if it is set. Note the single quotes
-# setopt PROMPT_SUBST
-# RPS1='${MODE_INDICATOR_PROMPT} ${vcs_info_msg_0_}'
-# VIM_MODE_VICMD_KEY='^D'
-#bindkey -rpM viins '^[^['
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# zsh-startify, a vim-startify like plugin
-# zinit wait"0b" lucid atload"zsh-startify" for zdharma/zsh-startify
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+alias ls='exa'                                                          # ls
+alias l='exa -lbF --git'                                                # list, size, type, git
+alias ll='exa -lbGF --git'                                             # long list
+alias llm='exa -lbGd --git --sort=modified'                            # long list, modified date sort
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+
+# specialty views
+alias lS='exa -1'                                                              # one column, just names
+alias lt='exa --tree --level=2'                                         # tree
+aba k='k --all'
+aba j='zfm'
+aba ja='zfm add'
+aba jl='zfm list'
+aba js='zfm select' #Open selection menu and print selection to stdout
+aba jq='zfm query ' #<pattern> 	Print bookmark matching pattern to stdout. Selection menu will open if match is ambiguous
+# f <pattern> 	Jump to bookmark directory matching pattern, open selection if ambiguous
+
+# Append this line to ~/.zshrc to enable fzf keybindings for Zsh:
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+# Append this line to ~/.zshrc to enable fuzzy auto-completion for Zsh:
+# source /usr/share/doc/fzf/examples/completion.zsh
+

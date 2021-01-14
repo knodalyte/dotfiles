@@ -1,3 +1,4 @@
 xsettingsd &
+source ~/.zshenv &
 
 
