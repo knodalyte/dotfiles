@@ -4,9 +4,27 @@
 
 - clean: ['~']
 
+- create:
+  - ~/.config/zsh 
+  - ~/.config/astronvim
+  - ~/.config/autorunner
+  - ~/.config/clifm
+  - ~/.config/clipcat
+  - ~/.config/common
+  - ~/.config/ctags
+  - ~/.config/kitty
+  - ~/.config/manuskript
+  - ~/.config/mimi
+  - ~/.config/PBE 
+  - ~/.config/qtile 
+  - ~/.config/xorg.conf.d
+  - ~/.config/yazi 
+  - ~/.config/mc
+  - ~/.config/jrnl 
+  - ~/.config/qutebrowser
+
 - link:
     ~/.bashrc: bashrc
-    ~/.zshrc: zshrc
     ~/.vimrc: vimrc
     ~/.profile: profile
     ~/.bashrc: bashrc
@@ -14,42 +32,80 @@
     ~/.vimrc: vimrc
     ~/.zshenv: zshenv
     ~/.Xresources: Xresources
-    ~/.config/astronvim
-    ~/.profile
-    ~/.config/autorunner:
-    ~/.config/clifm:
-    ~/.config/clipcat:
-    ~/.config/common:
-    ~/.config/ctags:
-    ~/.config/i3:
-    ~/.config/kitty:
-    ~/.config/manuskript:
-    ~/.config/mimi:
-    ~/.config/PBE:
-    ~/.config/qtile:
-    ~/.config/ranger:
-    ~/.config/rofi:
-    ~/.config/xorg.conf.d:
-    ~/.config/yazi:
-    ~/.config/mc:
-    ~/.config/jrnl:
-    ~/.config/qutebrowser:
-    ~/.config/user-dirs.locale 
-    ~/.config/zsh/abbreviations
-    ~/.config/zsh/.zimrc
-    ~/.config/zsh/.zlogin
-    ~/.config/zsh/.zprofile
-    ~/.config/zsh/fzf-key-bindings.zsh
-    ~/.config/zsh/.p10k.zsh
-    ~/.config/zsh/ov.zsh
-    ~/.config/zsh/.zsh_aliases-quickstart
-    ~/.config/zsh/.zsh_functions
-    ~/.config/zsh/.zshrc
+    ~/.config/astronvim: 
+      glob: true
+      path: config/astronvim/*
+    ~/.profile:
+    ~/.config/autorunner:  
+      glob: true
+      path: config/autorunner/*
+    ~/.config/clifm:  
+      glob: true
+      path: config/clifm/*
+    ~/.config/clipcat:  
+      glob: true
+      path: config/clipcat/*
+    ~/.config/common:  
+      glob: true
+      path: config/common/*
+    ~/.config/ctags:  
+      glob: true
+      path: config/ctags/*
+    ~/.config/i3:  
+      glob: true
+      path: config/i3/*
+    ~/.config/kitty:  
+      glob: true
+      path: config/kitty/*
+    ~/.config/manuskript:  
+      glob: true
+      path: config/manuskript/*
+    ~/.config/mimi:  
+      glob: true
+      path: config/mimi/*
+    ~/.config/PBE:  
+      glob: true
+      path: config/PBE/*
+    ~/.config/qtile:  
+      glob: true
+      path: config/qtile/*
+    ~/.config/ranger:  
+      glob: true
+      path: config/ranger/*
+    ~/.config/rofi:  
+      glob: true
+      path: config/rofi/*
+    ~/.config/xorg.conf.d:  
+      glob: true
+      path: config/xorg.conf.d/*
+    ~/.config/yazi:  
+      glob: true
+      path: config/yazi/*
+    ~/.config/mc:  
+      glob: true
+      path: config/mc/*
+    ~/.config/jrnl:  
+      glob: true
+      path: config/jrnl /*
+    ~/.config/qutebrowser:  
+      glob: true
+      path: config/qutebrowser/*
+    ~/.config/user-dirs.locale: config/user-dirs.locale 
+    ~/.config/zsh/abbreviations: config/zsh/abbreviations
+    ~/.config/zsh/.zimrc: config/zsh/zimrc
+    ~/.config/zsh/.zlogin: config/zsh/zlogin
+    ~/.config/zsh/.zprofile: config/zsh/zprofile 
+    ~/.config/zsh/fzf-key-bindings.zsh: config/zsh/fzf-key-bindings.zsh 
+    ~/.config/zsh/.p10k.zsh: config/zsh/p10k.zsh 
+    ~/.config/zsh/ov.zsh: config/zsh/ov.zsh
+    ~/.config/zsh/.zsh_aliases-quickstart: config/zsh/zsh_aliases-quickstart
+    ~/.config/zsh/.zsh_functions: config/zsh/zsh_functions
+    ~/.config/zsh/.zshrc: config/zsh/zshrc
 
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 # the following have to run after linking ~/.gitconfig
     - git update-submodule
-    - [chsh -s $(which zsh), Making zsh the default shell]
-    - sudo ./install -p plugins/dotbot-apt/apt.py -c packages.conf.yaml
+    - chsh -s $(which zsh)
+# - sudo ./install -p plugins/dotbot-apt/apt.py -c packages.conf.yaml

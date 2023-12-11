@@ -1,0 +1,1484 @@
+: 1581117046:0;vi .zshrc
+: 1603211159:0;.config/common/cbastart
+: 1603211174:0;z .config
+: 1603211198:0;cd common
+: 1603211232:0;cd ~/.local/bin
+: 1603211253:0;./cbastart
+: 1603211625:0;bat
+: 1603211634:0;bat cbastart
+: 1603211660:0;dpkg -L ranger
+: 1603211737:0;cd /usr/lib/python3/dist-packages/ranger/config
+: 1603212039:0;echo $TERM
+: 1603212048:0;xterm-kitty
+: 1603212056:0;echo $TERMCMD
+: 1603212502:0;echo $0
+: 1603212614:0;type export
+: 1603212999:0;echo $PATH
+: 1603214015:0;hstr --show-configuration >> ~/.zshrc
+: 1603214546:0;px
+: 1603214554:0;ptop
+: 1603215360:0;man bash
+: 1603216146:0;cd ~/Downloads
+: 1603216152:0;ct athame
+: 1603216157:0;cd athame
+: 1603216164:0;./zsh_athame_setup.sh --prefix=$HOME/.local/
+: 1603216239:0;sudo ./zsh_athame_setup.sh --prefix=$HOME/.local/ 
+: 1603216244:0;which nvim
+: 1603216290:0;sudo ./zsh_athame_setup.sh --prefix=$HOME/.local/ --vimbin=/usr/bin/nvim
+: 1603217163:0;autoload -Uz promptinit\
+promptinit
+: 1603230530:0;eval "$(zoxide init zsh --hook prompt)"\
+
+: 1603230535:0;zi
+: 1603232299:0;theme linuxonly
+: 1603232761:0;ZSH_THEME=linuxonly
+: 1603233569:0;ps -ef|grep firefox
+: 1603234025:0;fd *lock
+: 1603234063:0;fd -r *lock
+: 1603234207:0;broot
+: 1603234563:0;broot --install
+: 1603234616:0;br
+: 1603234630:0;lsd
+: 1603234695:0;procs
+: 1603241806:0;fdfind lock
+: 1603241829:0;fdfind lock$
+: 1603241854:0;alias fd="fdfind"
+: 1603241862:0;fd lock$
+: 1603242053:0;fd --help
+: 1603242665:0;source .zenvsh
+: 1603242789:0;z kernel
+: 1603242802:0;fzf config
+: 1603243049:0;z /var/log/
+: 1603243062:0;nvim messages
+: 1603285868:0;zonsh
+: 1603285875:0;fuch
+: 1603285951:0;fuck
+: 1603285970:0;xonsh
+: 1603286750:0;chsh -s $(which xonsh)
+: 1603291229:0;systemctl restart
+: 1603291525:0;systemctl halt
+: 1603294556:0;startx
+: 1603294581:0;lo
+: 1603294588:0;logout
+: 1603893991:0;inxi -M
+: 1603894014:0;sudo inxi -M
+: 1603894141:0;sudo inxi -M --dmidecode
+: 1604003035:0;sudo echo -1 >/sys/module/usbcore/parameters/autosuspend
+: 1604003128:0;sudo echo -1 > /sys/module/usbcore/parameters/autosuspend
+: 1604003249:0;sudo bash -c "echo -1 > /sys/module/usbcore/parameters/autosuspend"
+: 1604012418:0;python pad.py
+: 1604012475:0;python plugin.py
+: 1604014291:0;rg
+: 1604071467:0;procs nvim
+: 1604071491:0;kill -9 300644
+: 1604093893:0;rg autojump
+: 1604163794:0;which sk
+: 1604163825:0;z proj sk
+: 1604163833:0;z skim
+: 1604163847:0;z projects
+: 1604164012:0;rg --files skim
+: 1604164024:0;rg  skim
+: 1604164051:0;fd skim
+: 1604164580:0;sk --version
+: 1604164783:0;alias skim="sk --ansi -i -c \"(rg --files | rg -S \"{}\" & rg -S -l \"{}\" & echo {}.txt) | sort | uniq\" --bind 'ctrl-x:execute(vim {})+abort,enter:execute(vim {})+abort' --preview \"preview.sh {}\" --preview-window down:wrap"\
+
+: 1604164850:0;sk --ansi -i -c 'ag --color "{}"' --preview "preview.sh {}"
+: 1604166195:0;which notable
+: 1604166199:0;notable
+: 1604166974:0;fzf --height 40% --layout reverse --info inline --border \\
+    --preview 'file {}' --preview-window down:1:noborder \\
+    --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'\
+\
+
+: 1604167903:0;man zplug
+: 1604167958:0;zplug "SleepyBag/fuzzy-fs", use:fuzzy-fs
+: 1604167994:0;curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+: 1604191101:0;which shopt
+: 1604191101:0;shopt
+: 1604191101:0;sh .bashrc
+: 1604191101:0;sk --ansi -i -c \"(rg --files | rg -S \"{}\" & rg -S -l \"{}\" & echo {}.txt) | sort | uniq\" --bind 'ctrl-x:execute(vim {})+abort,enter:execute(vim {})+abort' --preview \"preview.sh {}\" --preview-window down:wrap
+: 1604191101:0;alias skim="sk --ansi -i -c \"(rg --files | rg -S \"{}\" & rg -S -l \"{}\" & echo {}.txt) | sort | uniq\" --bind 'ctrl-x:execute(vim {})+abort,enter:execute(vim {})+abort' --preview \"preview.sh {}\" --preview-window down:wrap"
+: 1604191101:0;alias skv="sk --ansi -i -c 'rg --color=always --line-number \"{}\"' --preview '``preview.sh {}' -d':' --bind 'enter:execute($EDITOR +{2} {1})+abort'"
+: 1604191101:0;cd .config/
+: 1604183463:0;cd .config
+: 1604186918:0;fd|fzy
+: 1604186949:0;fd > fzy
+: 1604187036:0;exa | fzy
+: 1604187254:0;git clone https://github.com/SleepyBag/fuzzy-fs.git
+: 1604187261:0;z fuzzy-fs
+: 1604187267:0;axa
+: 1604187306:0;skz
+: 1604187408:0;cd projects
+: 1604192475:0;cd linux-5.9.2
+: 1604192822:0;obsidian
+: 1604193282:0;wget -O .zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+: 1604195980:0;sudo dpkg -i linux-headers-5.9.2-cba_5.9.2-cba-1_amd64.deb linux-image-5.9.2-cba_5.9.2-cba-1_amd64.deb
+: 1604273923:0;FUZZY_FS_FILE_ICON 	icon of files 	ïƒ¥ƒ» fl
+: 1604277700:0;zsh .zshrc
+: 1604414508:0;ls --hyperlink=auto
+: 1604763667:0;5432167890
+: 1604763697:0;nvim displaylink-debian.sh
+: 1604764139:0;apt search evdi
+: 1604782076:0;git clone https://github.com/AdnanHodzic/displaylink-debian.git
+: 1604782076:0;cd displaylink-debian/ && sudo ./displaylink-debian.sh
+: 1604782076:0;nvim displaylink-debian.sh 
+: 1604782076:0;sudo ./displaylink-debian.sh
+: 1604782076:0;exitexit
+: 1604782166:0;make olddefconfig\
+scripts/config --disable DEBUG_INFO\
+scripts/config --disable MODULE_SIG\
+\
+make clean\
+make -j4 deb-pkg LOCALVERSION=-cba
+: 1604782334:0;sparky-aptus-upgrade-checker
+: 1604782383:0;sparky-aptus
+: 1604782404:0;sudo sparky-aptus
+: 1604785265:0;filefrag -v /swapfile
+: 1604785399:0;findmnt -no UUID -T /swapfile
+: 1604785450:0;mount |grep swap
+: 1604785695:0;sudo chmod 600 /swap
+: 1604785718:0;mkswap /swap
+: 1604785726:0;sudo mkswap /swap
+: 1604785792:0;sudo vi /etc/fstab
+: 1604785897:0;sysctl vm.swappiness
+: 1604785905:0;sudo sysctl vm.swappiness
+: 1604786027:0;sudo which filefrag
+: 1604786055:0;sudo filefrag -v /swap
+: 1604786911:0;lsblk
+: 1604787823:0;swap-offset /swap
+: 1604787832:0;sudo swap-offset /swap
+: 1604788575:0;sudo dpkg-reconfigure linux-image-5.9.6-cba
+: 1604788974:0;systemctl hybrid-sleep
+: 1604789134:0;systemctl hibernate
+: 1604789304:0;sudo refind-install
+: 1604790020:0;systemctl suspend-then-hibernate
+: 1604802860:0;systemctl 
+: 1604802884:0;sudo matebook-applet
+: 1604802899:0;z ker
+: 1604804354:0;scripts/config --disable DEBUG_INFO\
+scripts/config --disable MODULE_SIG\
+\
+make clean\
+make -j4 deb-pkg LOCALVERSION=-cba\
+```\
+
+: 1604804522:0;make gconfig
+: 1604804603:0;make CONFIG_HUAWEI_WMI=M
+: 1604845753:0;cd linux-5.9.6
+: 1604874646:0;sudo nvim refind_linux.conf
+: 1604930401:0;make-kpkg clean
+: 1604930441:0;sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc
+: 1604930499:0;make -j4 deb-pkg LOCALVERSION=-cba
+: 1604930849:0;z lin\
+
+: 1604930878:0;scripts/config --disable DEBUG_INFO\
+scripts/config --disable MODULE_SIG\
+\
+make clean\
+make -j4 deb-pkg LOCALVERSION=-cba\
+
+: 1605024001:0;autorandr --current
+: 1605024967:0;procs compton
+: 1605025014:0;which compton
+: 1605025027:0;ps -ef|grep compton
+: 1605025844:0;procs mons
+: 1605025851:0;which mons
+: 1605025957:0;ps -ef|grep mons
+: 1605026023:0;sudo make uninstall
+: 1605105157:0;curl 'https://liquorix.net/add-liquorix-repo.sh' | sudo bash
+: 1605105844:0;pip install catt
+: 1605105896:0;pip install vdirsyncer paragrep --update
+: 1605105908:0;pip install vdirsyncer paragrep --upgrade
+: 1605108398:0;blueman-tray &\
+
+: 1605144045:0;which -a qtile | exa -
+: 1605144070:0;exa -l /usr/local/bin/qtile
+: 1605144084:0;exa -l /home/cba/.local/bin/qtile
+: 1605144124:0;exa -l /home/cba/.local/bin/qtile --version
+: 1605144133:0;which qtile
+: 1605144149:0;qtile --version
+: 1605144184:0;.local/bin/qtile --version
+: 1605145453:0;pip search bitwarden
+: 1605145486:0;pip install bitwarden
+: 1605190693:0;git clone https://github.com/Fushko/gammy.git
+: 1605190699:0;cd gammy
+: 1605190710:0;qmake gammy.pro
+: 1605190741:0;qmake Gammy.pro
+: 1605191960:0;./gammy
+: 1605192744:0;which fswebcam
+: 1605193110:0;sudo add-apt-repository ppa:fantasyleague0629/wildguppy
+: 1605193180:0;dpkg -i wildguppy_1.0-1_all.deb
+: 1605193192:0;sudo dpkg -i wildguppy_1.0-1_all.deb
+: 1605193217:0;wildguppy
+: 1605193256:0;sudo dpkg -r wildguppy
+: 1605193702:0;sudo apt install build-essential cmake libsystemd-dev libpopt-dev libconfig-dev libgsl-dev
+: 1605193890:0;mkdir clight
+: 1605193893:0;cd clight
+: 1605193902:0;git clone https://github.com/FedeDP/Clight.git
+: 1605193912:0;cd Clight
+: 1605194088:0;apt search libmodule
+: 1605194221:0;git clone https://github.com/FedeDP/libmodule.git
+: 1605194226:0;cd libmodule
+: 1605194269:0;$ cpack -G DEB
+: 1605194362:0;cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ../
+: 1605194403:0;sudo dpkg -i libmodule_5.0.0_amd64.deb
+: 1605194417:0;cmake \\
+    -G "Unix Makefiles" \\
+    -DCMAKE_INSTALL_PREFIX=/usr \\
+    -DCMAKE_INSTALL_LIBDIR=lib \\
+    -DCMAKE_BUILD_TYPE="Release" \\
+
+: 1605194659:0;git clone https://github.com/FedeDP/Clightd.git
+: 1605194666:0;cd Clightd
+: 1605194783:0;sudo apt install build-essential pkg-config cmake libsystemd-dev libxrandr-dev libxext6-dev policykit-1 libpolkit-gobject-1-dev libjpeg-turbo8-dev libusb-dev libwayland-dev libdrm-dev\
+
+: 1605194808:0;apt search turbo8
+: 1605194820:0;apt search libjpeg
+: 1605194905:0;apt search libxext
+: 1605195100:0;mkdir build
+: 1605195103:0;cd build
+: 1605195209:0;apt search libudev
+: 1605195290:0;sudo apt install libudev-dev
+: 1605195331:0;apt search polkit-gobject
+: 1605195423:0;sudo apt install libpolkit-gobject-1-dev
+: 1605195450:0;apt search ddcutil
+: 1605195471:0;sudo apt install libddvutil-dev
+: 1605195482:0;sudo apt install libddcutil-dev
+: 1605195533:0;cpack -G DEB
+: 1605195560:0;sudo apt install ddvutil
+: 1605195571:0;sudo apt install ddcutil
+: 1605195646:0;sudo dpkg -i clight_4.2_amd64.deb
+: 1605195720:0;sudo systemctl enable clightd.service
+: 1605199030:0;make clean
+: 1605199039:0;cmake \\
+    -G "Unix Makefiles" \\
+    -DCMAKE_INSTALL_PREFIX=/usr \\
+    -DCMAKE_INSTALL_LIBDIR=lib \\
+    -DCMAKE_BUILD_TYPE="Release" \\
+    -DENABLE_DDC=1 -DENABLE_GAMMA=1 -DENABLE_DPMS=1 -DENABLE_SCREEN=1 
+: 1605199124:0;cpack -G DEB\
+
+: 1605199142:0;sudo dpkg -i clightd_5.0_amd64.deb
+: 1605199686:0;inxi
+: 1605199695:0;inxi -h
+: 1605199725:0;inxi -s
+: 1605199810:0;inxi -J
+: 1605199941:0;inxi -J -xx
+: 1605200119:0;webcamoid
+: 1605200833:0;systemctl restart clightd
+: 1605200875:0;clight
+: 1605201235:0;light -L
+: 1605201352:0;light -G
+: 1605201412:0;light -G -s sysfs/leds/phy0-led
+: 1605201897:0;light -k
+: 1605201903:0;light -K
+: 1605202960:0;journalctl -l|grep -i error > journal-errors.txt\
+
+: 1605202982:0;journalctl -l|grep -i error > journal-errors.txt\
+sudo 
+: 1605202993:0;sudo journalctl -l|grep -i error > journal-errors.txt\
+
+: 1605203007:0;bat journal-errors.txt
+: 1605215327:0;sudo dpkg -i linux-headers-5.9.6-cba_5.9.6-cba-1_amd64.deb linux-image-5.9.6-cba_5.9.6-cba-1_amd64.deb
+: 1605293036:0;xsetroot -cursor_name left_ptr
+: 1605296104:0;sh .config/common/tray_appsq.sh
+: 1605296426:0;procs policy
+: 1605296561:0;sudo nvim /etc/environment
+: 1605297743:0;qtile-cmd -o cmd -f restart\
+
+: 1605298011:0;/usr/lib/policykit-1/polkit-agent-helper-1\
+
+: 1605298019:0;/usr/lib/policykit-1/polkit-agent-helper-1\
+ --help
+: 1605298038:0;man polkit-agent-helper-1
+: 1605298054:0;sparky-polkit
+: 1605298076:0;proc pol
+: 1605298080:0;procs pol
+: 1605298097:0;systemctl list
+: 1605298103:0;systemctl
+: 1605298159:0;what
+: 1605298227:0;tldr systemctl
+: 1605298238:0;cheat systemctl
+: 1605298265:0;cheat
+: 1605299009:0;man dbus-uuidgen
+: 1605299067:0;sudo bat /var/lib/dbus/machine-id\
+
+: 1605299093:0;exa -l /var/lib/dbus/machine-id
+: 1605299114:0;exa -l /etc/machine-id
+: 1605302103:0;man dbus-launch
+: 1605302132:0;procs dbus
+: 1605303863:0;geeqie
+: 1605304920:0;which synaptic
+: 1605305134:0;synaptic-pkexec
+: 1605305158:0;procs polkit
+: 1605305170:0;man lxpolkit
+: 1605307354:0;dbus-launch synaptic
+: 1605307374:0;sudo which synaptic
+: 1605307389:0;dbus-launch /usr/sbin/synaptic
+: 1605307429:0;which synaptic-pkexec
+: 1605307441:0;dbus-launch synaptic-pkexec
+: 1605308395:0;sudo dpkg -i huawei-wmi_1.1.1_all.deb
+: 1605308443:0;matebook-applet
+: 1605309385:0;pasystray &
+: 1605310617:0;journalctl -xb -p3
+: 1605310643:0;sudo journalctl -xb -p3
+: 1605311292:0;sudo dmesg
+: 1605311331:0;sudo dmesg |grep firmware bug
+: 1605311336:0;sudo dmesg |grep firmware
+: 1605311356:0;sudo dmesg |grep Firmware
+: 1605318025:0;dmesg |grep 'DEV_SPECIAL(IOAPIC\|not in IVRS table'
+: 1605318091:0;lspci -nn | egrep "SMBus | IOMMU"
+: 1605318199:0;sudo nvim /boot/refind_linux.conf
+: 1605319698:0;inxi -vvv
+: 1605319710:0;man inxi
+: 1605319731:0;inxi -c
+: 1605319739:0;inxi -c -x
+: 1605319744:0;inxi -c -xxx
+: 1605362562:0;alttab
+: 1605362738:0;alttab -mk Alt_L
+: 1605362761:0;alttab -mk Control_L
+: 1605362784:0;alttab -mk Control_L&
+: 1605362793:0;bg
+: 1605362815:0;man alttab
+: 1605371863:0;lsmod | grep kvm\
+
+: 1605378712:0;make oldconfig
+: 1605384837:0;sudo dpkg -i linux-headers-5.9.8-cba_5.9.8-cba-1_amd64.deb linux-image-5.9.8-cba_5.9.8-cba-1_amd64.deb
+: 1605454604:0;man nvr
+: 1605457062:0;fzf
+: 1605457095:0;nvr -s .zshrc
+: 1605460735:0;z lin
+: 1605460752:0;locate scripts
+: 1605460769:0;locate ./scripts
+: 1605460817:0;fd ./scrips
+: 1605460822:0;fd ./scripts
+: 1605460844:0;fd . './scripts'
+: 1605460969:0;fd . './scripts' | fzf -e -i
+: 1605461508:0;fd . '/home/cba/arduino15' | fzf -e -i
+: 1605461526:0;fd . '/home/cba/.arduino15' | fzf -e -i
+: 1605462148:0;man fdfind
+: 1605463383:0;sudo systemctl hibernate
+: 1605476869:0;nvr -h
+: 1605477090:0;nvr --serverlist
+: 1605477208:0;procs clightd
+: 1605633162:0;locate rc.conf
+: 1605633195:0;bat /etc/ranger/config/rc.conf
+: 1605633878:0;bat /etc/ranger/config/commands.py
+: 1605639126:0;man psd
+: 1605639566:0;ytop
+: 1605640224:0;sudo gnome-logs
+: 1605640596:0;sudo nvim /etc/modprobe.d/iwlwifi.conf
+: 1605640871:0;sudo nvim /usr/local/lib/systemd/user/dunst.service
+: 1605640886:0;sudo nvim /usr/lib/systemd/user/dunst.service
+: 1605641732:0;procs modem
+: 1605641747:0;procs clight
+: 1605641853:0;clight &
+: 1605641898:0;light-locker
+: 1605641921:0;procs screen
+: 1605641930:0;man light-locker
+: 1605642057:0;loginctl session-status
+: 1605642274:0;sudo nvim /etc/lightdm/Xsession
+: 1605642288:0;sudo ranger
+: 1605642481:0;light-locker-command -l
+: 1605642573:0;dm-tool lock
+: 1605647236:0;syncthing-gtk
+: 1605647250:0;syncthing-gtk &
+: 1605903108:0;sudo dd if=elive_3.8.17_beta_hybrid_i386.iso of=/dev/sda bs=4M
+: 1605974850:0;grep -F -m 1 "cpu family" /proc/cpuinfo
+: 1606163501:0;systemd-analyze
+: 1606163530:0;systemd-analyze blame
+: 1606164020:0;man udevadm
+: 1606230369:0;udevadm monitor
+: 1606230385:0;killall clight
+: 1606322057:0;du -h
+: 1606407350:0;df
+: 1606407606:0;procs|less
+: 1606407757:0;chkservice|fzf
+: 1606408239:0;ps -ef
+: 1606408254:0;ps -ef|fzf
+: 1606408493:0;reset
+: 1606408497:0;mount
+: 1606411034:0;firefox -P
+: 1606411165:0;man firefox
+: 1606411207:0;firefox -h
+: 1606413974:0;cd projects/qtile
+: 1606414904:0;ixit
+: 1606415285:0;man gnupg
+: 1606415303:0;info gnupg
+: 1606490432:0;alias|fzf
+: 1606490621:0;z sys
+: 1606490724:0;rg cache .
+: 1606490752:0;rg firefox .
+: 1606490809:0;rg ram
+: 1606490817:0;rg ram 
+: 1606491174:0;pkb
+: 1606492007:0;pgp-gen-key
+: 1606492033:0;pgp -gen-key
+: 1606492038:0;pgp
+: 1606492059:0;gpa
+: 1606492180:0;z qtile
+: 1606504541:0;./aft-mtp-mount 6t
+: 1606504675:0;man aft-mtp-mount
+: 1606504798:0;man adb
+: 1606505535:0;lsusb
+: 1606505657:0;aft-mtp-mount 6t
+: 1606506479:0;./go-mtpfs ~/6t
+: 1606506881:0;fusermount -u 6t
+: 1606581859:0;fastboot
+: 1606581867:0;fastboot 
+: 1606581873:0;fastboot -h
+: 1606582241:0;fastboot oem unlock
+: 1606583348:0;fastboot devices
+: 1606583355:0;fastboot boot twrp-3.4.0-2-fajita.img
+: 1606596252:0;fd republic
+: 1606596281:0;fdfind -h
+: 1606596415:0;fd backup*.zip
+: 1606596420:0;fd backup
+: 1606597293:0;fd elec
+: 1606753008:0;fd config.py
+: 1606762478:0;cd ..i
+: 1606762489:0;su
+: 1606762503:0;sudo dpkg -i peazip_7.5.0.LINUX.x86_64.GTK2.deb
+: 1606936379:0;killall zoom
+: 1607008507:0;autorandr both
+: 1607008564:0;autorandr Displayport-eDP
+: 1607008676:0;autorandr Displayport
+: 1607127445:0;sudo apt install python3-imdbpy
+: 1607127463:0;sudo pip install imdbpy
+: 1607127490:0;apt search imdbpy
+: 1607127498:0;sudo dpkg -i hypnotix_1.1_all.deb
+: 1607127517:0;sudo dpkg -i hypnotix_1.1_all.deb --ignore-depends
+: 1607127586:0;sudo dpkg -i hypnotix_1.1_all.deb --ignore-depends=python3-imdbpy
+: 1607127697:0;sudo dpkg -i hypnotix_1.1_all.deb --refuse-depends
+: 1607127727:0;sudo dpkg  --refuse-depends -i hypnotix_1.1_all.deb
+: 1607127753:0;man dpkg
+: 1607127855:0;sudo dpkg  --configure -a
+: 1607127908:0;sudo dpkg  --refuse-depends --configure -a
+: 1607128715:0;man hypnotix
+: 1607128722:0;hypnotix -h
+: 1607128750:0;hypnotix --help
+: 1607184571:0;sudo dpkg --configure -a --force-depends\
+
+: 1607184649:0;sudo apt update --fix-missing
+: 1607184689:0;sudo apt --fix-broken install
+: 1607184748:0;sudo apt install -f
+: 1607184893:0;apt-cache depends hypnotix
+: 1607185003:0;sudo dpkg -i python3-imdbpy_6.8-2_all.deb
+: 1607185019:0;sudo apt dist-upgrade
+: 1607185110:0;sudo apt autoremove
+: 1607293319:0;adb
+: 1607293401:0;bat /tmp/adb.1000.log
+: 1607293419:0;sudo adb devices
+: 1607293610:0;which -a adb
+: 1607293619:0;which  adb
+: 1607293632:0;sudo /bin/adb devices
+: 1607294043:0;/bin/adb devices
+: 1607294893:0;z SD
+: 1607294915:0;z Download
+: 1607294925:0;adb sideload magisk-debug.zip
+: 1607295037:0;cd ../../Downloads
+: 1607295041:0;cd platform-tools_r30.0.5-linux
+: 1607295048:0;cd platform-tools
+: 1607295053:0;adb devices
+: 1607295073:0;./adb devices
+: 1607295133:0;./adb sideload ../../SD/Download/magisk-debug.zip
+: 1607295167:0;ls ../../SD/Download
+: 1607295473:0;./adb sideload ../../../SD/Download/uninmod_magisk-v4-20180922.zip
+: 1607295680:0;./adb sideload ../../../SD/Download/magisk-uninstaller.zip
+: 1607295928:0;./adb sideload ../../../SD/Download/magisk-debug.zip
+: 1607387517:0;psd p
+: 1607387585:0;systemctl --user disable psd.service
+: 1607387596:0;systemctl --user stop psd.service
+: 1607699845:0;git update
+: 1607699964:0;man qtile
+: 1607700015:0;qtile start
+: 1607700992:0;pip search nvim
+: 1607701046:0;pip show neovim-remote
+: 1607701065:0;pip install neovim-remote
+: 1607701394:0;apt search thefuck
+: 1607701425:0;apt show thefuck
+: 1607701535:0;autorandr -c
+: 1607707591:0;autorandr -l Displayport-eDP
+: 1607707606:0;autorandr
+: 1607707628:0;autorandr HDMI
+: 1607727721:0;sudo pip install xcffib
+: 1607727731:0;sudo pip install xcffib --Upgrade
+: 1607727741:0;sudo pip install xcffib --Update
+: 1607727751:0;sudo pip install xcffib --upgrade
+: 1607728010:0;pip install xcffib --upgrade
+: 1607730776:0;pip show ueberzug
+: 1607730799:0;pip search ueberzug
+: 1607730838:0;pip install ueberzug
+: 1607731129:0;man syncthing-gtk
+: 1607731192:0;pip show nvr
+: 1607731207:0;pip search neovim-remote
+: 1607731242:0;pip search neovim-gui
+: 1607731252:0;pip show neovim-gui
+: 1607732416:0;rm -f /tmp/nvimsocket\
+rm -rf /tmp/nvim*\
+
+: 1607732991:0;export $NVIM_LISTEN_ADDRESS=
+: 1607733013:0;export $NVIM_LISTEN_ADDRESS=""
+: 1607733028:0;export NVIM_LISTEN_ADDRESS=""
+: 1607733037:0;if [ -S $NVIM_LISTEN_ADDRESS ]; then\
+    nvr --remote-wait -s "$@"\
+else\
+    $NVR_CMD --nofork -- "$@"\
+fi
+: 1607784919:0;pip install pynvim=0.4.1
+: 1607784929:0;pip install pynvim==0.4.1
+: 1607784945:0;sudo pip install pynvim==0.4.1
+: 1607785837:0;qtile cmd-obj -o screen -f toggle_group -a '3' && firefox &\
+
+: 1607801194:0;git clone https://github.com/john-bokma/tumblelog.git\
+
+: 1607801202:0;cd tumblelog
+: 1607801294:0;which python
+: 1607801303:0;sudo pip install commonmark
+: 1607801320:0;python tumblelog.py --help
+: 1607801572:0;python3 -m venv venv
+: 1607801665:0;pip3 install commonmark
+: 1607801696:0;source venv/bin/activate
+: 1607801946:0;mkdir htdocs\
+sassc --sourcemap=none -t compressed styles/steel.scss htdocs/steel.css
+: 1607802122:0;mkdir htdocs\
+sass --sourcemap=none -t compressed styles/steel.scss htdocs/steel.css
+: 1607802207:0;mkdir htdocs\
+sass --no-sourcemap -t compressed styles/steel.scss htdocs/steel.css
+: 1607802292:0;sass --no-sourcemap styles/steel.scss htdocs/steel.css
+: 1607802317:0;sass --nosourcemap styles/steel.scss htdocs/steel.css
+: 1607802325:0;sass  styles/steel.scss htdocs/steel.css
+: 1607802419:0;pip install commonmark
+: 1607802428:0;pip show commonmark
+: 1607802436:0;python3 tumblelog.py --template-filename tumblelog.html --output-dir htdocs/ \\
+        --author 'Test' --name 'Test Blog' --description 'This is a test'    \\
+        --blog-url 'http://example.com/' --css steel.css tumblelog.md
+: 1607802452:0;cd htdocs\
+python3 -m http.server
+: 1607805236:0;git clone https://github.com/sunainapai/makesite.git
+: 1607805244:0;cd makesite
+: 1607805271:0;make serve
+: 1607806433:0;git clone https://github.com/interstar/bootdown.git\
+cd bootdown/example/\
+python ../bootdown.py example.md\
+firefox example/index.html
+: 1607806533:0;python -m 2to3 bootdown.py
+: 1607806603:0;locate 2to3
+: 1607806618:0;locate 2to3.py
+: 1607806644:0;mlocate 2to3.py
+: 1607806657:0;sudo locate 2to3.py
+: 1607806697:0;pip search 2to3
+: 1607806741:0;pip install 2to2
+: 1607806747:0;pip install 2to3
+: 1607806761:0;2to3 -w bootdown.py
+: 1607806843:0;nvr -s bootdown.py
+: 1607806944:0;cd example
+: 1607806969:0;pip install thoughtstorms
+: 1607807001:0;sudo pip install thoughtstorms
+: 1607807021:0;python ../bootdown.py example.md\
+firefox example/index.html\
+
+: 1607808205:0;z tum
+: 1607808225:0;cd htdocs
+: 1607808228:0;python3 -m http.server
+: 1607809601:0;Nikola
+: 1607809650:0;pip show Nikola
+: 1607809729:0;pip install Nikola
+: 1607809771:0;pip install aiohttp watchdog
+: 1607821688:0;rg gvim
+: 1607821933:0;set
+: 1607821971:0;rg visual
+: 1607821977:0;rg editor
+: 1607881583:0;which -a Nikola
+: 1607881669:0;pip install Nikola[extras]
+: 1607881747:0;cd ../.
+: 1607881791:0;nikola init --demo sa
+: 1607882007:0;z output
+: 1607882023:0;firefox index.html
+: 1607886949:0;nikola theme -l
+: 1607887223:0;nikola theme -i bootstrap4
+: 1607887324:0;nvim conf.py
+: 1607887431:0;nikola auto
+: 1607887485:0;nikola build
+: 1607887495:0;nikola serve -b
+: 1607887553:0;man nikola
+: 1607887592:0;nikola serve -b --port 8080
+: 1607887678:0;nikola serve -b --port 8000
+: 1607887881:0;vimdiff conf.py ~/projects/sa/conf.py
+: 1607888782:0;nikola auto -b --port 8080
+: 1607889963:0;nikola plugin -l
+: 1607889998:0;nikola plugin --install textile
+: 1607890141:0;locate f0136.jpg
+: 1607890174:0;locate F0136.JPG
+: 1607890257:0;cp /home/cba/Pictures/DSCF0136.JPG ./images/
+: 1607890263:0;cp /home/cba/Pictures/DSCF0136.JPG ./images
+: 1607890361:0;cp /home/cba/Pictures/DSCF0136.JPG ~/projects/sa/images
+: 1607891682:0;bpytop
+: 1607891832:0;df -h
+: 1607893336:0;exa /home/cba/.cache/mozilla/firefox/did8x112.default-release/startupCache/startupCache.8.little
+: 1607893356:0;exa -l /home/cba/.cache/mozilla/firefox/did8x112.default-release/startupCache/startupCache.8.little
+: 1607893368:0;exa -l /home/cba/.cache/mozilla/firefox/did8x112.default-release/startupCache/
+: 1607893388:0;exa -l /home/cba/.cache/mozilla/firefox/did8x112.default-release/startupCache
+: 1607894085:0;git init .
+: 1607894142:0;git remote add origin git@github.com:knodalyte/SuccessiveApproximation
+: 1607894207:634;vim config.py
+: 1607894850:0;git add .\
+git commit -am "Automate builds with GitHub Actions"
+: 1607894893:0;git config --global user.email cba@knodal.com
+: 1607894913:0;git commit --amend --reset-author
+: 1607894966:0;vim
+: 1607895914:0;ssh-keygen -t rsa -b 4096 -C â€ƒ¼cba@knodal.comâ€ƒ½
+: 1607896001:0;ssh-keygen -t ed25519 -b 4096 -C â€ƒ¼cba@knodal.comâ€ƒ½
+: 1607896113:0;xclip -selection clipboard < ~/.ssh/id_ed25519.pub
+: 1607896840:0;git pull
+: 1607896922:0;man git-pull
+: 1607897000:0;git-pull -ff
+: 1607897038:0;git config pull.rebase false
+: 1607897086:0;git branch --set-upstream-to=origin/main main
+: 1607897100:0;git push --set-upstream origin main
+: 1607897109:0;git pull -ff
+: 1607897205:0;git pull origin master â€ƒ³allow-unrelated-histories
+: 1607897291:0;git status
+: 1607897429:0;git branch
+: 1607897517:0;git pull origin main â€ƒ³allow-unrelated-histories
+: 1607897621:0;git add .gitignore
+: 1607897633:0;git rebase --continue
+: 1607897647:0;git pull origin main --allow-unrelated-histories
+: 1607905554:0;pip install gitsome
+: 1607906505:0;source ./.zshrc
+: 1607906682:0;cd "$ZSH" && git stash && upgrade_oh_my_zsh && git stash pop
+: 1607907449:0;gh feed
+: 1607907486:0;gh notifications
+: 1607957607:0;nikola -i bootblog4
+: 1607957622:0;nikola theme -i bootblog4
+: 1607957925:0;nikola subtheme -n cba_flatley_bootblog4_theme -s flatly -p bootblog4
+: 1607959388:0;nikola theme -i maupassant
+: 1607960750:0;nikola theme -i hyde
+: 1607960770:0;nikola auto -b --port 8000
+: 1607962336:0;nikola subtheme -n cba_executive_bootstrap4_theme -s executive-suite -p bootstrap4
+: 1607970018:0;fd
+: 1607970024:0;fd -f
+: 1607970045:0;fd --type f
+: 1607970059:0;fzf --height 40% --layout reverse --info inline --border \\
+    --preview 'file {}' --preview-window down:1:noborder \\
+    --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'
+: 1607971578:0;sudo dpkg -i git-delta_0.4.4_amd64.deb
+: 1607971598:0;sourch ../.zshrc
+: 1607971605:0;source ../.zshrc
+: 1607972133:0;nikola 
+: 1607972145:0;ff nikola
+: 1607972298:0;exa -h
+: 1607972324:0;vim .gitignore
+: 1607972559:0;git config --global core.editor "$EDITOR -w"
+: 1607972825:0;git config --global core.editor nvim
+: 1607973258:0;git
+: 1607973303:0;get commit -a
+: 1607973310:0;git commit -a
+: 1607973334:0;git add .
+: 1607973352:0;git push
+: 1607973380:0;git show
+: 1607973417:0;git fsck
+: 1607973436:0;git diff
+: 1607973758:0;nikola github-deploy
+: 1607973907:0;which -a nikola
+: 1607974778:0;which -a ghp-import | exa -l
+: 1607974836:0;pip install ghp-import --U
+: 1607974850:0;pip install ghp-import -U
+: 1607974877:0;sudo pip show ghp-import
+: 1607975036:0;nvr /home/cba/.local/lib/python3.9/site-packages/nikola/plugins/command/github_deploy.py
+: 1607975284:0;/usr/bin/ghp-import -h
+: 1607975325:0;sudo rm /bin/ghp-import
+: 1607975396:0;sudo rm /usr/local/bin/ghp-import
+: 1607975441:0;bat /home/cba/.local/bin/ghp-import
+: 1607975517:0;hh import
+: 1607975530:0;sudo pip install ghp-import -u
+: 1607975540:0;sudo pip install ghp-import -U
+: 1607975626:0;pip -h install
+: 1607975639:0;sudo pip uninstall ghp-import -U
+: 1607975647:0;sudo pip uninstall ghp-import 
+: 1607975664:0;sudo pip install ghp-import 
+: 1607975700:0;pip show ghp-import
+: 1607975947:0;sudo pip install ghp-import --no-cache-dir
+: 1607976003:0;pip -h
+: 1607976061:0;sudo c
+: 1607976147:0;sudo pip install ghp-import -vvv
+: 1607976236:0;which -a ghp-import
+: 1607976422:0;/usr/local/bin/ghp-import -h
+: 1607976452:0;pip uninstall --user ghp-import -vvv
+: 1607976468:0;pip help uninstall
+: 1607976531:0;pip uninstall ghp-import -vvv
+: 1607976593:0;mc
+: 1607976901:0;vim  /usr/local/lib/python3.9/dist-packages/ghp_import.py
+: 1607977065:0;hh nikola
+: 1607977077:0;z sa
+: 1607977114:0;ghp-import
+: 1607977123:0;ghp-import -h
+: 1607977137:0;ghp-import -n
+: 1607977178:0;vim /home/cba/.local/lib/python3.9/site-packages/ghp_import/__init__.py
+: 1607977313:0;pip install nikola -U
+: 1607978463:0;hh pip
+: 1607978494:0;sudo pip install ghp-import==0.6.0
+: 1607978529:0;sudo pip install ghp-import==0.5.5
+: 1607978588:0;pip install ghp-import==0.6.0
+: 1607978610:0;pip install ghp-import==0.5.5
+: 1607978639:0;pip uninstall ghp-import
+: 1607978705:0;sudo pip uninstall ghp-import
+: 1607978738:0;which ghp-import
+: 1607978979:0;pip install ghp-import2
+: 1607979033:0;nikola github_deploy
+: 1608045814:0;source ~/.zshrc
+: 1608132548:0;which  firefox
+: 1608132742:0;man which
+: 1608133442:0;pip install WhichFile
+: 1608133793:0;vim /home/cba/.local/lib/python3.9/site-packages/whichfile/__main__.py
+: 1608153321:0;git init --bare $HOME/.dotfiles.git\
+echo 'alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"' >> $HOME/.zshrc\
+source ~/.zshrc\
+dotfiles config --local status.showUntrackedFiles no
+: 1608153421:0;source ~/.zshrc\
+dotfiles config --local status.showUntrackedFiles no
+: 1608153760:0;dotfiles status\
+dotfiles add .vimrc\
+dotfiles commit -m "Add vimrc"\
+dotfiles remote add origin https://www.github.com/knodalyte/dotfiles
+: 1608153778:0;dotfiles push origin master
+: 1608154059:0;dotfiles remote add origin https://www.github.com/username/repo.git\
+dotfiles push origin main
+: 1608154255:0;dotfile merge main
+: 1608154324:0;cd .dotfiles.git
+: 1608154335:0;dotfiles checkout main
+: 1608154441:0;dotfiles merge main
+: 1608154495:0;dotfiles remote add origin git@www.github.com/knodalyte/dotfiles
+: 1608154605:0;dotfiles remote add origin git@github.com/knodalyte/dotfiles
+: 1608154795:0;git init --bare $HOME/.dotfiles.git
+: 1608154811:0;dotfiles config --local status.showUntrackedFiles no
+: 1608154847:0;dotfiles status\
+dotfiles add .vimrc\
+dotfiles commit -m "Add vimrc"
+: 1608168104:0;git init .dotfiles.git
+: 1608168140:0;dotfiles add .vimrc
+: 1608168157:0;dotfiles commit -m "Add vimrc"
+: 1608168193:0;dotfiles remote add origin git@github.com:knodalyte/dotfiles
+: 1608168218:0;dotfiles push origin main
+: 1608168296:0;dotfiles add .zshrc
+: 1608168320:0;dotfiles push -u origin main
+: 1608168412:0;dotfiles add .zshenv
+: 1608168426:0;tree .config
+: 1608168562:0;whichfile tree
+: 1608168640:0;git commit -m "zsh stuff, part 1"
+: 1608168659:0;dotfiles commit -m "zsh stuff, part 1"
+: 1608169372:0;dotfiles add .config/qtile
+: 1608169394:0;dotfiles commit -m "add qtile config"
+: 1608169409:0;dotfiles push -u origin master
+: 1608170277:0;dotfiles add .config/tridactyl
+: 1608170301:0;dotfiles commit -m "add tridactyl"
+: 1608170322:0;dotfiles push
+: 1608170879:0;dotbare fadd -d .config/autorandr
+: 1608170982:0;dotbare fadd 
+: 1608171768:0;echo ".dotfiles.git" >> $HOME/.gitignore
+: 1608171816:0;Q\
+echo "__pycache__/" >> $HOME/.gitignore
+: 1608171837:0;Q\
+
+: 1608171846:0;echo "__pycache__/" >> $HOME/.gitignore
+: 1608222175:0;dotbare status
+: 1608222211:0;git add .zshrc
+: 1608222228:0;dotbare add .zshrc
+: 1608222269:0;dotbare commit -m="files from home dir"
+: 1608222279:0;dotbare push
+: 1608224379:0;procs firefox
+: 1608225609:0;man gitsome\
+
+: 1608225614:0;gitsome -h
+: 1608225784:0;gh configure
+: 1608482632:0;tree
+: 1608482632:0;apt show tree
+: 1608482632:0;cargo install tre-command
+: 1608252952:0;tre
+: 1608253312:0;whichfile tre
+: 1608253364:0;ln -s /home/cba/.cargo/bin/tre /home/cba/.local/bin/tree
+: 1608255038:0;uptime
+: 1608391713:0;ansiweather
+: 1608391818:0;ansiweather -l Waltham,US -u imperial
+: 1608391863:0;ansiweather -l Waltham,US -u imperial -s true
+: 1608403694:0;cd .vim
+: 1608406300:0;fd *.opml
+: 1608406361:0;fd opml
+: 1608411893:0;ps -ef | grep cr[o]n\
+
+: 1608411902:0;procs cron
+: 1608412823:0;./update-dns.sh
+: 1608412944:0;chmod 700 update-dns.sh
+: 1608413073:0;man crontab
+: 1608413254:0;sudo vim /etc/cron.allow
+: 1608413270:0;crontab -l
+: 1608413417:0;crontab -e
+: 1608413624:0;bcrontab -e
+: 1608413856:0;sudo crontab -e
+: 1608414013:0;ping knodal.duckdns.org
+: 1608478321:0;go get -u github.com/schachmat/wego
+: 1608478334:0;wego
+: 1608479823:0;git clone git@github.com:unixorn/zsh-quickstart-kit.git
+: 1608479842:0;cd zsh-quickstart-kit
+: 1608479846:0;exa -l
+: 1608480834:0;z ~
+: 1608480991:0;ssh-add
+: 1608481007:0;ssh-add -l
+: 1608481391:0;gpg -k
+: 1608481572:0;tig
+: 1608485257:0;hs
+: 1608485264:0;hstr
+: 1608485292:0;alias|less
+: 1608486416:0;echo $fpath
+: 1608486725:0;gh me
+: 1608488116:0;zsh-quickstart-select-bullet-train
+: 1608488360:0;zsh-quickstart-select-powerlevel10k
+: 1608488364:0;kitty
+: 1608494326:0;clipnotify
+: 1608494362:0;./clipnotify
+: 1608494392:0;cp clipnotify ~/.local/bin
+: 1608494541:0;sudo cp /home/cba/.local/bin/clipnotify /usr/bin
+: 1608494553:0;sudo make install
+: 1608480143:0;load-our-ssh-keys() {\
+  # Fun with SSH\
+  if [ $(ssh-add -l | grep -c "The agent has no identities." ) -eq 1 ]; then\
+    if [[ "$(uname -s)" == "Darwin" ]]; then\
+      # macOS allows us to store ssh key pass phrases in the keychain, so try\
+      # to load ssh keys using pass phrases stored in the macOS keychain.\
+      #\
+      # You can use ssh-add -K /path/to/key to store pass phrases into\
+      # the macOS keychain\
+      ssh-add -A # load all ssh keys that have pass phrases stored in macOS keychain\
+    fi\
+\
+    for key in $(find ~/.ssh -type f -a \( -name '*id_rsa' -o -name '*id_dsa' -name '*id_ecdsa' \))\
+    do\
+      if [ -f ${key} -a $(ssh-add -l | grep -c "${key//$HOME\//}" ) -eq 0 ]; then\
+        # ssh-add ${key}\
+      fi\
+    done\
+  fi\
+}\
+\
+load-our-ssh-keys
+: 1608496789:0;aar
+: 1608498794:0;thefuck --alias
+: 1608498802:0;thefuck
+: 1608498831:0;bat /usr/local/bin/thefuck
+: 1608498849:0;sudo pip install thefuck
+: 1608498878:0;eval $(thefuck --alias)
+: 1608498889:0;keychain
+: 1608499098:0;z 5.10
+: 1608499110:0;z linux-5.10.1
+: 1608500227:0;clipfsck
+: 1608500284:0;bat /usr/bin/clipmenu
+: 1608500355:0;clipmenud
+: 1608500362:0;clipmenud &
+: 1608500369:0;clipmenu
+: 1608501048:0;bindkey
+: 1608501105:0;zle -al|less
+: 1608501685:0;cd
+: 1608501694:0;cd kernel
+: 1608501735:0;sudo dpkg -i linux-headers-5.10.1-cba_5.10.1-cba-1_amd64.deb linux-image-5.10.1-cba_5.10.1-cba-1_amd64.deb
+: 1608502095:0;fd qtile.log
+: 1608502116:0;fdfind qtile.log
+: 1608502156:0;locate qtile.log
+: 1608502173:0;mlocate qtile.log
+: 1608502201:0;l .local/share/qtile
+: 1608502549:0;man autorandr
+: 1608504064:0;autorandr -h
+: 1608504082:0;autorandr -s eDP
+: 1608504093:0;autorandr -s eDP --force
+: 1608504138:0;AUTORANDR_PROFILE_FOLDER=/home/cba/.config/autorandr && autorandr -l eDP
+: 1608504325:0;less .local/share/qtile/qtile.log
+: 1608504918:0;qtile cmd-obj -o screen -f next_group
+: 1608504997:0;whichfile autorandr
+: 1608505178:0;qtile cmd-obj -o cmd -f restart\
+
+: 1608505572:0;AUTORANDR_PROFILE_FOLDER=/home/cba/.confi/autorandr
+: 1608505617:0;AUTORANDR_PROFILE_FOLDER=/home/cba/.config/autorandr
+: 1608505622:0;echo $AUTORANDR_PROFILE_FOLDER
+: 1608516516:0;cccccc
+: 1608516566:0;bbbbb
+: 1608516733:0;a
+: 1608517177:0;python config.py
+: 1608517233:0;sudo python config.py
+: 1608517333:0;python3.9 config.py
+: 1608517359:0;whichfile qtile
+: 1608517385:0;bat /usr/local/qtile
+: 1608517395:0;bat /usr/local/bin/qtile
+: 1608517411:0;whichfile python3
+: 1608517453:0;z q
+: 1608517497:0;sudo pip install .
+: 1608517773:0;autorandr -l eDP
+: 1608517801:0;autorandr --change
+: 1608564169:0;pip install xcffib -U
+: 1608564264:0;pip install cffi -U
+: 1608570561:0;mail
+: 1608570578:0;killall qtile
+: 1608570620:0;kill -9 48279
+: 1608570635:0;kill -9 4489
+: 1608570638:0;procs qtile
+: 1608570647:0;kill -9 4325
+: 1608570702:0;kitty -h
+: 1608570824:0;kitty autorandr -l eDP
+: 1608570845:0;kitty autorandr -l Displayport
+: 1608570877:0;procs kitty
+: 1608571446:0;systemctl reboo
+: 1608571980:0;./gen-keybinding-img
+: 1608571984:0;l
+: 1608572180:0;./gen-keybinding-img -c ~/.config/qtile/config.py
+: 1608573770:0;systemctl start autorandr
+: 1608573792:0;systemctl enable autorandr
+: 1608574727:0;./cbave
+: 1608574736:0;./cbavd
+: 1608575228:0;xrandr
+: 1608575758:0;autorandr -l Displayport
+: 1608575867:0;./cbavd.sh
+: 1608580447:0;sudo systemctl start autorandr
+: 1608580477:0;_ systemctl enable autorandr
+: 1608601559:0;dotfiles status
+: 1608601587:0;dotfiles -h
+: 1608601610:0;dotfiles list
+: 1608601769:0;xev
+: 1608603431:0;zle -al
+: 1608603499:0;bindkey|less
+: 1608603532:0;bindkey -L|less
+: 1608650362:0;make olddefconfig
+: 1608650382:0;make xconfig
+: 1608650662:0;scripts/config --disable DEBUG_INFO\
+scripts/config --disable MODULE_SIG\
+\
+make clean\
+make -j4 deb-pkg LOCALVERSION=-cba
+: 1608654461:0;make -j`nproc` bindeb-pkg
+: 1608654785:0;make nconfig
+: 1608664784:0;bash eval "$(ssh-agent -s)"
+: 1608664789:0;bash
+: 1608737795:0;eval "$(ssh-agent -s)"
+: 1608737795:0;ssh-add ~/.ssh
+: 1608737795:0;ssh-add ~/.ssh/id_ed25519.pub 
+: 1608737795:0;ssh-add ~/.ssh/id_ed25519
+: 1608737795:0;ssh-add ~/.ssh/id_rsa
+: 1608737795:0;touch testfile
+: 1608737795:0;echo â€ƒ¼ASDFZXCV:hf:testfileâ€ƒ½ > /dev/zero
+: 1608737795:0;l testfile
+: 1608737795:0;for mod in $(lsmod | tail -n +2 | cut -d' ' -f1); do modinfo ${mod} | grep -q "signature" || echo "no signature for module: ${mod}" ; done
+: 1608737795:0;procs clipmenu
+: 1608737795:0;man clipmenud
+: 1608737795:0;clipmenud -h
+: 1608737795:0;CM_LAUNCHER=fzf clipmenu
+: 1608737795:0;n
+: 1608737795:0;CM_LAUNCHER=rofi clipmenu
+: 1608737795:0;pip search anamnesis
+: 1608737795:0;pip install pip_search
+: 1608737795:0;pip_search anamnesis
+: 1608737795:0;pip_search clipster
+: 1608737795:0;pip_search ranger
+: 1608737795:0;procs clipster
+: 1608737795:0;pip-search python-gi
+: 1608737795:0;pip_search python-gi
+: 1608737795:0;pip_search gi
+: 1608737795:0;git clone https://github.com/xrelkd/clipcat.git
+: 1608737795:0;cd clipcat/
+: 1608737795:0;cargo make build-release
+: 1608737795:0;mkdir -p                       $XDG_CONFIG_HOME/clipcat
+: 1608737795:0;clipcatd &
+: 1608737795:0;clipcat-menu --finder=skim
+: 1608737795:0;clipcat-menu --finder=fzf
+: 1608737795:0;sudo python -m pip install --ignore-installed PyGObject
+: 1608737795:0;whichfile python
+: 1608737795:0;sudo mc
+: 1608737795:0;clipster
+: 1608737795:0;clipster -d &
+: 1608737795:0;clipster -o -p
+: 1608737795:0;clipster -o -c
+: 1608737795:0;clipster -sp
+: 1608737795:0;complete
+: 1608737795:0;man fzf
+: 1608737795:0;Clipcat
+: 1608737795:0;CI
+: 1608737795:0;Clipcat is a clipboard manager written in Rust Programming Language.
+: 1608737795:0;Architecture
+: 1608737795:0;Clipcat uses the Client-Server architecture. There are two role types in this architecture: Server and Client.
+: 1608737795:0;Clipcat Server
+: 1608737795:0;A clipcat server (as known as daemon) is running as the background process that doing the following routines:
+: 1608737795:0;Clipcat Client
+: 1608737795:0;A clipcat client sends requests to the server for the following manipulations:
+: 1608737795:0;List of Implementations
+: 1608737795:0;Program 	Role Type 	Comment
+: 1608737795:0;clipcatd 	Server 	The clipcat server (daemon)
+: 1608737795:0;clipcatctl 	Client 	The clipcat client which provides a command line interface
+: 1608737795:0;clipcat-menu 	Client 	The clipcat client which calls built-in finder or external finder for selecting clip
+: 1608737795:0;Quick Start
+: 1608737795:0;Usage
+: 1608737795:0;$ mkdir -p                       $XDG_CONFIG_HOME/clipcat
+: 1608737795:0;$ clipcatd default-config      > $XDG_CONFIG_HOME/clipcat/clipcatd.toml
+: 1608737795:0;$ clipcatctl default-config    > $XDG_CONFIG_HOME/clipcat/clipcatctl.toml
+: 1608737795:0;$ clipcat-menu default-config  > $XDG_CONFIG_HOME/clipcat/clipcat-menu.toml
+: 1608737795:0;$ clipcatd
+: 1608737795:0;clipcatctl list 	List cached clipboard history
+: 1608737795:0;clipcatctl promote <id> 	Insert cached clip with <id> into X11 clipboard
+: 1608737795:0;clipcatctl remove [ids] 	Remove cahced clips with [id] from server
+: 1608737795:0;clipcatctl clear 	Clear cached clipboard history
+: 1608737795:0;Command 	Comment
+: 1608737795:0;clipcat-menu insert 	Insert a cached clip into X11 clipboard
+: 1608737795:0;clipcat-menu remove 	Remove cached clips from server
+: 1608737795:0;clipcat-menu edit 	Edit a cached clip with \$EDITOR
+: 1608737795:0;Note: Supported finders for clipcat-menu:
+: 1608737795:0;Configuration
+: 1608737795:0;Program 	Default Configuration File Path
+: 1608737795:0;clipcatd 	$XDG_CONFIG_HOME/clipcat/clipcatd.toml
+: 1608737795:0;clipcatctl 	$XDG_CONFIG_HOME/clipcat/clipcatctl.toml
+: 1608737795:0;clipcat-menu 	$XDG_CONFIG_HOME/clipcat/clipcat-menu.toml
+: 1608737795:0;Configuration for clipcatd
+: 1608737795:0;daemonize = true          # run as a traditional UNIX daemon
+: 1608737795:0;max_history = 50          # max clip history limit
+: 1608737795:0;[monitor]
+: 1608737795:0;load_current = true       # load current clipboard content at startup
+: 1608737795:0;enable_clipboard = true   # watch X11 clipboard
+: 1608737795:0;enable_primary = true     # watch X11 primary clipboard
+: 1608737795:0;[grpc]
+: 1608737795:0;host = '127.0.0.1'        # host address for gRPC
+: 1608737795:0;port = 45045              # port number for gRPC
+: 1608737795:0;Configuration for clipcatctl
+: 1608737795:0;log_level = 'INFO'        # log level
+: 1608737795:0;Configuration for clipcat-menu
+: 1608737795:0;server_host = '127.0.0.1' # host address of clipcat gRPC server
+: 1608737795:0;server_port = 45045       # port number of clipcat gRPC server
+: 1608737795:0;finder = 'rofi'           # the default finder to invoke when no "--finder=<finder>" option provided
+: 1608737795:0;[rofi]                    # options for "rofi"
+: 1608737795:0;[dmenu]                   # options for "dmenu"
+: 1608737795:0;line_length = 100         # length of line
+: 1608737795:0;menu_length = 30          # length of menu
+: 1608737795:0;[custom_finder]           # customize your finder
+: 1608737795:0;program = 'fzf'           # external program name
+: 1608737795:0;args = []                 # arguments for calling external program
+: 1608737795:0;Integration
+: 1608737795:0;Integrating with Zsh
+: 1608737795:0;For zsh user, it will be useful to integrate clipcat with zsh.
+: 1608737795:0;Add the following command in your zsh configuration file (~/.zshrc):
+: 1608737795:0;if type clipcat-menu >/dev/null 2>&1; then     alias clipedit=' clipcat-menu --finder=builtin edit';     alias clipdel=' clipcat-menu --finder=builtin remove'     bindkey -s '^\' "^Q clipcat-menu --finder=builtin insert ^J";     bindkey -s '^]' "^Q clipcat-menu --finder=builtin remove ^J"; fi
+: 1608737795:0;Integrating with i3 Window Manager
+: 1608737795:0;For i3 window manager user, it will be useful to integrate clipcat with i3.
+: 1608737795:0;Add the following options in your i3 configuration file ($XDG_CONFIG_HOME/i3/config):
+: 1608737795:0;exec_always --no-startup-id clipcatd                # start clipcatd at startup
+: 1608737795:0;set $launcher-clipboard-insert clipcat-menu insert
+: 1608737795:0;set $launcher-clipboard-remove clipcat-menu remove
+: 1608737795:0;bindsym $mod+p exec $launcher-clipboard-insert
+: 1608737795:0;bindsym $mod+o exec $launcher-clipboard-remove
+: 1608737795:0;Note: You can use rofi or dmenu as the default finder.
+: 1608734784:0;sudo ./RosaImageWriter
+: 1608737795:0;~/.local/bin/menutray -i -gtk3
+: 1608737795:0;~/.local/bin/menutray -i -gtk3 &
+: 1608649374:0;chkservice
+: 1608739299:0;whichfile cbastart
+: 1608740223:0;nvr -s .config/clipcat/clipcat-menu.toml
+: 1608740313:0;clipcat-menu default-config > $XDG_CONFIG_HOME/clipcat/clipcat-menu.toml
+: 1608740345:0;clipcatd default-config > $XDG_CONFIG_HOME/clipcat/clipcatd.toml
+: 1608740365:0;clipcatctl default-config > $XDG_CONFIG_HOME/clipcat/clipcatctl.toml
+: 1608740447:0;clipcat-menu
+: 1608823908:0;uname -a
+: 1608919618:0;pip install jrnl
+: 1608919640:0;title=$(jrnl --short | fzf --tac --no-sort) && \
+ jrnl -on "$(echo $title | cut -c 1-16)" $1
+: 1608920285:0;cd go
+: 1608920312:0;if [ ! "$#" -gt 0 ]; then echo "Need a string to search for; return 1; fi\
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}" any\
+
+: 1608920590:0;unalias z\
+z() {\
+  if [[ -z "$*" ]]; then\
+    cd "$(_z -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"\
+  else\
+    _last_z_args="$@"\
+    _z "$@"\
+  fi\
+}\
+\
+zz() {\
+  cd "$(_z -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q "$_last_z_args")"\
+}
+: 1608920665:0;unalias z 2> /dev/null\
+z() {\
+ [ $# -gt 0 ] && _z "$*" && return\
+ cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"\
+}
+: 1608920753:0;\
+fzf-locate-widget() {\
+ local selected\
+ if selected=$(locate / | fzf -q "$LBUFFER"); then\
+ LBUFFER=$selected\
+ fi\
+ zle redisplay\
+}\
+zle -N fzf-locate-widget\
+bindkey '\ei' fzf-locate-widget
+: 1608920760:0;zle cbastart
+: 1608921744:0;pydoc3 os
+: 1608921760:0;pydoc3 subprocess
+: 1608921816:0;pip install fuzzdoc\
+
+: 1608921845:0;fuzzdoc subprocess
+: 1608921907:0;fuzzdoc
+: 1608922440:0;python3 -m pip install --user pipx
+: 1608922458:0;python3 -m pipx ensurepath
+: 1608922511:0;moreman qtile
+: 1608923642:0;glo
+: 1608923655:0;dotbare
+: 1608923690:0;dotbare flog
+: 1608923741:0;cd .zshrc.d
+: 1608923754:0;dotbare fadd -f
+: 1608930001:0;arandr
+: 1608948997:0;/bin/sh /home/cba/.local/bin/cbastart
+: 1608951448:0;/bin/sh
+: 1609081435:0;whichfile firefox
+: 1609081449:0;which -a firefox
+: 1609081473:0;k /usr/bin/firefox
+: 1609081484:0;k /bin/firefox
+: 1609090306:0;_ dpkg -i zoom_amd64.deb
+: 1609090340:0;zoom
+: 1609090428:0;which -a zoom
+: 1609093824:0;python
+: 1609095772:0;nvim +'checkhealth rnvimr'
+: 1609098548:0;moreman firefox
+: 1609099958:0;firefox --safe-mode
+: 1609100591:0;firefox
+: 1609102057:0;curl -fsSl https://raw.githubusercontent.com/tridactyl/tridactyl/master/native/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh master
+: 1609103193:0;moreman nvr
+: 1609106096:0;nvr -s
+: 1609106125:0;moreman nvim-qt
+: 1609106215:0;nvim-qt -server $NVIM_LISTEN_ADDRESS
+: 1609106235:0;nvim-qt --server $NVIM_LISTEN_ADDRESS
+: 1609107388:0;systemctl --user import-environment DISPLAY\
+
+: 1609110120:0;qtile cmd-obj -o screen -f toggle_group -a '2' \
+
+: 1609110514:0;qtile cmd-obj -o screen -f toggle_group -a '2' kitty ranger &\
+
+: 1609110580:0;qtile cmd-obj -o screen -f toggle_group -a '2' && kitty ranger &\
+
+: 1609111516:0;git reset hard
+: 1609111535:0;git reset --hard
+: 1609114832:0;nxetggg
+: 1609115354:0;qtile cmd-obj -o screen -f toggle_group -a '2' ; kitty ranger &\
+
+: 1609116919:0;nvim-qt
+: 1609117164:0;echo $NVIM_LISTEN_ADDRESS
+: 1609168597:0;systemctl reboot
+: 1609169109:0;cbastart
+: 1609169235:0;strace -o grepme zsh -ic exit\
+fgrep profile grepme
+: 1609169246:0;bat grepme
+: 1609170604:0;./ffibuild
+: 1609170655:0;which -a qtile
+: 1609170747:0;sudo pip install xcffib -U
+: 1609170804:0;ixot
+: 1609171127:0;cd qtile
+: 1609171131:0;scripts/ffibuild
+: 1609171143:0;pip install .
+: 1609171162:0;qtile
+: 1609174092:0;meld /home/cba/.mozilla/firefox/jb613l1a.default-release-1/prefs.js /home/cba/.mozilla/firefox/bew9bxhj.cba-20201227/prefs.js
+: 1609174932:0;nvim
+: 1609194608:0;skim
+: 1609194614:0;sk
+: 1609194863:0;locate knodey.py
+: 1609194895:0;bat /home/cba/pkm/PKM/knodey.py
+: 1609196832:0;menutray
+: 1609197057:0;pip install cursed_desktop
+: 1609197083:0;cursed-desktop
+: 1609197110:0;cursed_desktop
+: 1609197150:0;cursed_desktop --executor classic
+: 1609198109:0;xdg-open theme.txt
+: 1609198134:0;cd Android\ Camera
+: 1609198168:0;xdg-open IMG_20201128_174938.jpg
+: 1609259004:0;locate *.enex
+: 1609271128:0;export|fzf
+: 1609271212:0;export PERL5LIB="/home/cba/.cpan/build:$PERL5LIB"\
+
+: 1609271257:0;moreman cpan
+: 1609271300:0;cpan Linux::DesktopFiles
+: 1609271329:0;sudo cpan Linux::DesktopFiles
+: 1609271380:0;sudo cpan Gtk2
+: 1609273047:0;jgmenu
+: 1609273282:0;manuskript
+: 1609273303:0;moreman manuskript
+: 1609273403:0;moreman jgmenu
+: 1609273444:0;jgmenu_run init -i
+: 1609274433:0;jgmenu_run init --theme=col3
+: 1609274482:0;jgmenu_run init --theme
+: 1609274507:0;jgmenu_run init --listthemes
+: 1609274534:0;jgmenu_run init --list-themes
+: 1609274571:0;jgmenu_run init --theme=archlabs_1803
+: 1609274584:0;jgmenu_run
+: 1609274948:0;hh cpah
+: 1609274957:0;hh cpan
+: 1609274961:0;fc "cpan"
+: 1609274982:0;cpan Gtk2
+: 1609275332:0;cpan Gtk3
+: 1609275339:0;sudo cpan Gtk3
+: 1609275351:0;menutray -i
+: 1609275362:0;z proj
+: 1609275368:0;git clone https://github.com/olivierkes/manuskript.git\
+
+: 1609275375:0;cd manuskript
+: 1609275415:0;bin/manuskript
+: 1609279070:0;which nvim-qt
+: 1609279078:0;which nvr
+: 1609279628:0;which sh
+: 1609279643:0;k /usr/bin/sh
+: 1609279859:0;moreman mdv
+: 1609279946:0;pip install mdv
+: 1609279980:0;mdv linkbox.txt
+: 1609280049:0;pip install mdv -U
+: 1609280704:0;nvr /home/cba/.local/lib/python3.9/site-packages/mdv/markdownviewer.py
+: 1609280876:0;mdv Bookmarks.md
+: 1609281289:0;markv Bookmarks.md
+: 1609281304:0;which markv
+: 1609281315:0;moreman markv
+: 1609281334:0;markv
+: 1609281370:0;cat Bookmarks.md| markv
+: 1609281542:0;pipx install mdo
+: 1609281599:0;mdo Bookmarks.md
+: 1609281620:0;mdo --no-pager Bookmarks.md
+: 1609281993:0;pipx install richcat
+: 1609282015:0;richcat Bookmarks.md
+: 1609282044:0;richcat --disable-pager Bookmarks.md
+: 1609282091:0;moreman richcat
+: 1609282105:0;man richcat
+: 1609282209:0;richcat --style=nopager toc.txt
+: 1609282407:0;richcat --style=nopager Bookmarks.md
+: 1609283346:0;richcat --help
+: 1609283552:0;richcat eversource-20200925.csv
+: 1609283587:0;richcat eversource-20200925.csv -w 80
+: 1609283781:0;vd eversource-20200925.csv
+: 1609283807:0;moreman vd
+: 1609292297:0;bat eversource-20200925.csv
+: 1609292918:0;Bookmarks.md
+: 1609292927:0;pip uninstall mdv
+: 1609292945:0;pipx install mdv3
+: 1609292983:0;mdv --help
+: 1609293003:0;mdv
+: 1609293040:0;k *.md
+: 1609293098:0;mdv vim-pad.txt
+: 1609293125:0;mdv Using\ the\ Windows\ Subsystem\ for\ Linux\ with\ Xfce\ 4\ Solarian\ Programmer.md
+: 1609293156:0;richcat Using\ the\ Windows\ Subsystem\ for\ Linux\ with\ Xfce\ 4\ Solarian\ Programmer.md
+: 1609293479:0;mdv -t all Using\ the\ Windows\ Subsystem\ for\ Linux\ with\ Xfce\ 4\ Solarian\ Programmer.md
+: 1609293706:0;which column
+: 1609293732:0;k *.csv
+: 1609293751:0;column hamlet-people-google-format.csv
+: 1609293884:0;pipx install golumn
+: 1609294427:0;pip install wxPython
+: 1609294578:0;pip install golumn
+: 1609294617:0;golumn eversource-20200925.csv
+: 1609350150:0;pip show homeassistant
+: 1609350197:0;pip search homeassistant
+: 1609350220:0;pip_search homeassistant
+: 1609362194:0;sudo snap install core
+: 1609362293:0;sudo snap install home-assistant-snap
+: 1609362413:0;sudo snap install home-assistant-configurator
+: 1609362488:0;snap connections
+: 1609364273:0;sudo apt-get install python3 python3-dev python3-venv python3-pip libffi-dev libssl-dev libjpeg-dev zlib1g-dev autoconf build-essential libopenjp2-7 libtiff5
+: 1609364324:0;sudo useradd -rm homeassistant -G dialout,gpio,i2c
+: 1609364370:0;sudo useradd -rm homeassistant -G dialout,i2c
+: 1609364378:0;cd /srv\
+sudo mkdir homeassistant\
+sudo chown homeassistant:homeassistant homeassistant
+: 1609364600:0;sudo chown homeassistant:homeassistant homeassistant
+: 1609364616:0;sudo -u homeassistant -H -s\
+cd /srv/homeassistant
+: 1609366467:0;sudo nvim /home/homeassistant/.homeassistant/configuration.yaml
+: 1609371450:0;pip install homeassistant-cli
+: 1609372392:0;pip install hass-configurator
+: 1609372467:0;pipx install hass-configurator
+: 1609372482:0;hass-configurator
+: 1609372500:0;hass-configurator --help
+: 1609372522:0;hass-configurator -p 8123
+: 1609424539:0;procs home
+: 1609424594:0;procs docker
+: 1609424600:0;procs dock
+: 1609424610:0;ncdu projects
+: 1609424765:0;ncdu .config
+: 1609424900:0;moreman moreman
+: 1609424936:0;alias mm=moreman
+: 1609424941:0;mm moreman
+: 1609424967:0;ncdu Downloads/
+: 1609425132:0;ncdu sd
+: 1609425152:0;ncdu SD
+: 1609425340:0;ncdu .cache
+: 1609428700:0;sudo FU
+: 1609428704:0;zplug "SleepyBag/fuzzy-fs", use:fuzzy-fs\
+
+: 1609429225:0;zplug
+: 1609430688:0;killall redshift
+: 1609430707:0;procs redshift
+: 1609430729:0;sudo kill -9
+: 1609430738:0;htop
+: 1609431601:0;echo $ZDOT_DIR
+: 1609431609:0;echo $ZDOTDIR
+: 1609431755:0;whichfile q
+: 1609431815:0;zsh -xv
+: 1609431831:0;
+: 1609431836:0;?
+: 1609431844:0;help
+: 1609431969:0;time zsh -i -c exit
+: 1609432021:0;mm zsh
+: 1609432180:0;zsh -x
+: 1609432365:0;zsh -h
+: 1609432374:0;zsh --help
+: 1609432391:0;zsh -m
+: 1609432512:0;zsh
+: 1609432896:0;fuzzy-fs todo
+: 1609432951:0;.zplug list
+: 1609433105:0;source ~/.zplug/init.zsh
+: 1609433242:0;zplug list
+: 1609436324:0;git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+: 1609436335:0;git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgenx"
+: 1609436457:0;zgen update
+: 1609436751:0;zgen load "SleepyBag/fuzzy-fs", use:fuzzy-fs\
+
+: 1609436866:0;zgen load "SleepyBag/fuzzy-fs"\
+
+: 1609437004:0;zgen -h
+: 1609437012:0;zgen --help
+: 1609437022:0;mm zgen
+: 1609437032:0;which zgen
+: 1609437429:0;./fuzzy-fs
+: 1609437440:0;source fuzzy-fs
+: 1609439307:0;make -h
+: 1609439350:0;make -n
+: 1609439361:0;cd src
+: 1609439458:0;git clone [200~https://github.com/alex-courtis/xlayoutdisplay.giT
+: 1609439466:0;git clone https://github.com/alex-courtis/xlayoutdisplay.git
+: 1609439475:0;cd xlayoutdisplay
+: 1609439490:0;make
+: 1609439500:0;make install
+: 1609439508:0;_ make install
+: 1609439786:0;xlayoutdisplay -p HDMI-A-0
+: 1609439829:0;xlayoutdisplay -i
+: 1609439951:0;z pkb
+: 1609440270:0;hh
+: 1609440303:0;source ~/.zgen/SleepyBag/fuzzy-fs-master/fuzzy-fs\
+
+: 1609440473:0;ttodo
+: 1609440511:0;pipx install todotxt-machine -U
+: 1609440575:0;pipx reinstall todotxt-machine
+: 1609440597:0;pipx uninstall todotxt-machine
+: 1609440654:0;rm /home/cba/.local/bin/todotxt-machine
+: 1609440663:0;pipx install todotxt-machine
+: 1609440672:0;pipx install todotxt-machine --force
+: 1609440677:0;todotxt-machine
+: 1609440927:0;skv
+: 1609440955:0;skv zplug
+: 1609440968:0;rg zplug
+: 1609442651:0;
+: 1609442685:0;z .co
+: 1609442690:0;z kitty
+: 1609442706:0;nvim kitty.conf
+: 1609443010:0;ls
+: 1609443029:0;source .zgen-setup
+: 1609443152:0;git clone http://github.com/MenkeTechnologies/zpwr.git ~/.zpwr && cd ~/.zpwr/install && ./install.sh
+: 1609443786:0;mkdir ~/.zinit\
+git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+: 1609443804:0;z ../.zinit
+: 1609443809:0;cd..
+: 1609443816:0;cd~
+: 1609443842:0;z .zinit
+: 1609443882:0;source bin/zinit.zsh
+: 1609443936:0;sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+: 1609444018:0;exa
+: 1609444026:0;ll
+: 1609444039:0;bat .zshrc
+: 1609444071:0;nvr .zshrc
+: 1609444650:0;zi clist
+: 1609444660:0;zinit
+: 1609447970:0;p
+: 1609449146:0;nvim /home/cba/.zinit-local-plugins
+: 1609449678:0;crasis
+: 1609450537:0;skv theme
+: 1609455506:0;pip uninstall q
+: 1609455571:0;sudo rm /usr/bin/q
+: 1609455575:0;exit
+: 1609457297:0;p10k_configure
+: 1609457314:0;p10k configure
+: 1609457831:0;ranger
+: 1609457863:0;fuzzy-fs
+: 1609516244:0;sudo chkservice
+: 1609516360:0;procs python
+: 1609516404:0;firefox -p
+: 1609520693:0;alias -h
+: 1609520696:0;alias
+: 1609521230:0;zinit self-update
+: 1609524403:0;zmodload zsh/curses
+: 1609526608:0;ZINIT_HOME="${ZINIT_HOME:-${ZPLG_HOME:-${ZDOTDIR:-$HOME}/.zinit}}"\
+ZINIT_BIN_DIR_NAME="${${ZINIT_BIN_DIR_NAME:-$ZPLG_BIN_DIR_NAME}:-bin}"
+: 1609526617:0;export
+: 1609526672:0;source .zinit/bin/zinit.sh
+: 1609526702:0;source .zinit/bin/zinit.zsh
+: 1609527595:0;zsh-startify
+: 1609527942:0;source .zshrc
+: 1609529479:0;source ~/.zinit/bin/zinit.zsh\
+
+: 1609529622:0;
+: 1609530553:0;z pro
+: 1609530594:0;
+: 1609530607:0;j pro
+: 1609531012:0;prompt zefram
+: 1609531022:0;prompt suse
+: 1609531648:0;prompt adam1
+: 1609531654:0;prompt adam2
+: 1609531663:0;prompt bart
+: 1609531685:0;prompt -c
+: 1609531809:0;prompt restore
+: 1609532146:0;prompt -l
+: 1609532159:0;prompt off
+: 1609532196:0;prompt -h off
+: 1609532212:0;prompt default
+: 1609532226:0;prompt -h default
+: 1609532380:0;PS1="READY > "\
+zinit ice wait'!0' \
+zinit load halfo/lambda-mod-zsh-theme\
+
+: 1609532838:0;cd ..
+: 1609532845:0;cd ~
+: 1609533061:0;cd Downloads
+: 1609533075:0;..
+: 1609533485:0;setopt prompt_subst
+: 1609533491:0;setopt promptsubst
+: 1609534631:0;q
+: 1609535411:0;APOLLO_THEME=pure
+: 1609535734:0;lxqt-powermanagement -h
+: 1609535746:0;procs lzqt
+: 1609535764:0;procs lxqt
+: 1609535786:0;killall lxqt-powermanagement
+: 1609535792:0;lxqt-powermanagement&
+: 1609537259:0;theme
+: 1609537274:0;prompt -p
+: 1609537579:0;APOLLO_THEME=scrollback
+: 1609537623:0;APOLLO_THEME=apollo
+: 1609537653:0;APOLLO_THEME=defaults
+: 1609538303:0;pipx install zsh-startify
+: 1609538453:0;echo -e '\ue0b6\ue0b4'
+: 1609538467:0;echo -e '\u2642'
+: 1609538754:0;ZSH_THEME="lighthaus.zsh-theme"
+: 1609539491:0;APOLLO_THEME=powerline
+: 1609539867:0;z -h
+: 1609539902:0;z Dow
+: 1609539918:0;z Downloads
+: 1609540353:0;setopt
+: 1609540694:0;locate z.sh
+: 1609540995:0;z
+: 1609541200:0;k
+: 1609541299:0;pwd
+: 1609541791:0;OA
+: 1609542636:0;sudo su
+: 1609542751:0;zstyle
+: 1609542929:0;zstyle|fzf
+: 1609543390:0;zstyle|fzf\
+
+: 1609543415:0;APOLLO_THEME=cbapl
+: 1609543597:0;zstyle ':apollo*:*:core*:modules:left' modules 'git newline vi_mode root_indicator context dir ruler'\
+
+: 1609552897:0;nvr
+: 1609554715:0;source .zshenv
+: 1609554913:0;zz

@@ -1,0 +1,59 @@
+# Autorunner configuration file
+#
+# Usage: execute "<restart>" "<notify>" "<command>"
+#
+#   <restart>    1: Kill the process and restart it
+#                0: Only start when it is not running
+#
+#   <notify>     1: Notify via notifications when started/restarted
+#                0: Do not notify
+#   <command>    Full command (including arguments) to run
+
+# Start clipmenud when it is not running (never restart it) and notify
+execute "0" "1" "clipmenud"
+execute "0" "1" "wired"
+# execute "0" "1" "dunst"
+execute "0" "1" "kdeconnect-indicator"
+execute "0" "1" "blueman-applet"
+execute "0" "1" "udiskie --automount --notify --smart-tray"
+execute "0" "1" "syncthing-gtk"
+execute "0" "1" "pasystray"
+execute "0" "1" "nm-applet"
+execute "0" "1" "caffeine-indicator"
+# must do kill & restart or multiple instances are started:
+execute "1" "0" "dbus-launch matebook-applet"
+#execute "0" "1" "picom -b --experimental-backends --backend glx"
+# execute "0" "1" "picom --config $HOME/.config/qtile/scripts/picom.conf"
+execute "0" "1" "autocutsel -fork -buttonup"
+execute "0" "1" "xscreensaver -nosplash"
+#- supposedly started by powerkit https://github.com/rodlie/powerkit
+execute "0" "1" "powerkit"
+# execute "0" "1" "autokey-qt"
+
+
+# using tdrop rather than guake # guake &
+# guake &
+# /usr/lib/policykit-1/polkit-agent-helper-1
+# /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+# alttab -d 1  &
+# ~/.local/bin/menutray -i -gtk3 &
+# sleep 2
+# tint2 &
+# clipcatd &
+# QOwnNotes &
+# redshift-gtk &
+# clight &
+# suspect variety may have caused screen freeze
+# variety &
+# copyq &
+# ~/.local/bin/cbastart &
+# copyq &
+# lxqt-panel &
+# clight & #start before lxqt-powermanagement to try to grab dbus screensaver interface
+# lxqt-powermanagement &
+# light-locker &
+# ulauncher-toggle &
+# alttab -d 2 -mk Control_L &
+
+# xfce4-power-manager &
+

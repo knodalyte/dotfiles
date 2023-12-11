@@ -1,0 +1,92 @@
+# Start configuration added by Zim install {{{
+#
+# This is not sourced during shell startup, and it's only used to configure the
+# zimfw plugin manager.
+#
+zmodule jeffreytse/zsh-vi-mode
+
+#
+# Modules
+#
+
+# Sets sane Zsh built-in environment options.
+zmodule environment
+# Provides handy git aliases and functions.
+zmodule git
+# Applies correct bindkeys for input events.
+zmodule input
+# Sets a custom terminal title.
+zmodule termtitle
+# Utility aliases and functions. Adds colour to ls, grep and less.
+zmodule utility
+
+#
+# Prompt
+#
+
+# Exposes to prompts how long the last command took to execute, used by asciiship.
+zmodule duration-info
+# Exposes git repository status information to prompts, used by asciiship.
+zmodule git-info
+# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
+# zmodule asciiship
+#zmodule spaceship-prompt/spaceship-prompt --name spaceship --no-submodules
+# zmodule reobin/typewritten --name typewritten
+
+#
+# Completion
+#
+
+# Additional completion definitions for Zsh.
+# zmodule marlonrichert/zsh-autocomplete
+# zmodule zsh-users/zsh-completions --fpath src
+# Enables and configures smart and extensive tab completion.
+# completion must be sourced after all modules that add completion definitions.
+# zmodule lincheney/fzf-tab-completion --source zsh/fzf-zsh-completion.sh
+# zmodule aslingguang/fzf-tab-source --source fzf-tab.plugin.zsh
+zmodule Freed-Wu/fzf-tab-source 
+# zmodule Freed-Wu/fzf-tab-source --source fzf-tab-source.plugin.zsh
+zmodule completion
+# zmodule marlonrichert/zsh-autocomplete # this plugin always adds semicolon, 
+# very annoying
+zmodule Aloxaf/fzf-tab
+zmodule MichaelAquilina/zsh-you-should-use
+# zmodule momo-lab/zsh-abbrev-alias
+# Modules that must be initialized last
+#
+
+# Fish-like syntax highlighting for Zsh.
+# zsh-users/zsh-syntax-highlighting must be sourced after completion
+zmodule zsh-users/zsh-syntax-highlighting
+# Fish-like history search (up arrow) for Zsh.
+# zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
+#zmodule zsh-users/zsh-history-substring-search
+# Fish-like autosuggestions for Zsh.
+zmodule zsh-users/zsh-autosuggestions
+# }}} End configuration added by Zim install
+
+# cba add modules per web docs
+# zmodule magic-enter
+zmodule run-help
+zmodule fzf
+#zmodule prompt-pwd
+# zmodule joke/zim-starship
+zmodule chrissicool/zsh-256color
+# commandline history upon ^r
+zmodule joshskidmore/zsh-fzf-history-search
+zmodule joke/zim-yq
+zmodule archive
+# zmodule sorin
+# zmodule agkozak/agkozak-zsh-prompt
+#zmodule joke/zim-starship
+#zmodule spaceship-prompt/spaceship-prompt --name spaceship --no-submodules
+#zmodule urbainvaes/fzf-marks
+zmodule pabloariasal/zfm
+#zmodule skywind3000/z.lua --cmd 'eval "$(lua {}/z.lua --init zsh enhanced once)"'
+#zmodule asciiship
+zmodule sindresorhus/pure --source async.zsh --source pure.zsh
+
+# gh - github-cli
+zmodule joke/zim-github-cli
+
+

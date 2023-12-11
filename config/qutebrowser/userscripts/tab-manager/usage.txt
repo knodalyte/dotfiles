@@ -1,0 +1,99 @@
+If your browser just opened this by itself, you used tab-manager incorrectly or ran the "help" command.
+The most common mistakes are misspelling a session name when attempting to restore or open, forgetting a required flag or required arguments.
+You should have gotten a toast message from qutebrowser telling you what you did wrong.
+If you did everything correctly and this document still pops up by itself, feel free to open an issue. Include what command you ran, what flags you passed and what toast message you got.
+See the usage information below for proper usage instructions. 
+
+to run tab-manager, 
+```
+:spawn path/to/tab-manager.py /abspath/to/sessions/dir <command> -flag -flag <?argument(s)>
+```
+in the qutebrowser command line.
+
+I have included some useful keybind examples further below to make it easier for you to set up.
+
+The following are valid commands, and their flags and operations.
+Optional arguments are listed as such, otherwise they must be present.
+
+save - appends current tab to specified session unless it is already there, creates session if it doesn't exist
+    -f <session> - specifies the session to write to. Takes only one session
+remove - removes a tab link from a session file, by index
+    -t <index> - specifies the index of the tab to remove, must be an integer
+    optional:
+    -f <session> - specifies the session file to modify. Takes only one session
+    when used with no session specified, it attempts to remove the index from an open session HTML.
+    if run this way with any other page in focus other than a session file you will get an error
+save-all - appends all open tabs to specified session, creates it if it doesn't exist, does not save duplicate tabs
+    -f <session> - specifies the session to write to. Takes only one session.
+    optional:
+    -c - close all tabs after save-all and open session as HTML in browser
+    -o - overwrites existing session instead of appending non-duplicate tabs
+open - opens the specified session files as HTML with links and title
+    optional:
+    -f <session1> <session2>... - specifies the session(s) to open, can handle multiple sessions
+    when run with no session specified, it opens an index with links to all sessions in the directory
+    "index" can also be specified when specifying multiple files to open, if you want to open the index as well as a specific session
+restore - opens all links in a session or multiple sessions, like session restore, restores them with existing open tabs by default
+    optional:
+    -f <session1> <session2>... - specifies the session(s) to restore, can take multiple sessions
+    -c - closes all tabs before restoring. default behavior is to add tabs to existing session
+    when run with no sessions specified or no "-f" flag, it restores the session in the current focused tab. 
+    if run this way with any other page in the focused tab you will get an error
+merge - merges arbitrary number of session files, removes duplicates
+    -f <session> - specifies the output session, Takes only one session
+    -i <session1> <session2>... - specifies sessions to merge, takes one or more existing sessions as input.
+    -a <session1> <session2>... - merges all session files in the directory except specified sessions. basically allows you to specify which sessions not to merge rather than which ones to merge
+    the "-a" and "-i" flags are mutually exclusive and one of the two must be used, but never both.
+    optional:
+    -k - keep pre merged sessions after creating the merged session; default behavior is to delete input sessions after merge
+delete - deletes specified session(s)
+    -f <session1> <session2>... - specifies the session(s) to delete, can take multiple sessions
+rename - renames a session and updates the index
+    -f <session> - session to rename
+    -n <new_session_name> - new name
+export - DOES NOT WORK ON HTML! use this to export a qutebrowser session file to html so as to open the links in a different browser. Always removes duplicate tabs
+    -f <output_file> - the HTML file to write to, will be written to specified sessions directory
+    -p <abspath/to/qutebrowser/session/file> - the qutebrowser session file to read, absolute path
+    optional:
+    -w - export all windows in qutebrowser session, for multiwindow sessions
+    -h - export history of each tab as well, when used with "-w" it will export history for all windows in the session
+    -r - remove original qutebrowser session file after export
+update-index - just updates the index, useful if you manually copied a session file from one directory to another
+help - opens this file in the browser
+
+Some Useful Keybinds:
+
+- general bind, to manually enter commands, flags and arguments
+```
+:bind zg set-cmd-text -s :spawn --userscript path/to/tab-manager.py /abspath/to/sessions/dir/ 
+```
+- open one or more sessions as HTML, or open index
+```
+:bind zo set-cmd-text -s :spawn --userscript path/to/tab-manager.py /abspath/to/sessions/dir/ open -f 
+```
+- restore specified sessions, or the current open HTML file if it is a valid session
+```
+:bind zr set-cmd-text -s :spawn --userscript path/to/tab-manager.py /abspath/to/sessions/dir/ restore -f 
+```
+- restore, same as above but close all open tabs first
+```
+:bind zR set-cmd-text -s :spawn --userscript path/to/tab-manager.py /abspath/to/sessions/dir/ restore -c -f  
+```
+- save all and overwrite specified session (update session, don't append):
+```
+:bind za set-cmd-text -s :spawn --userscript path/to/tab-manager.py /abspath/to/sessions/dir/ save-all -o -f 
+```
+- append current focused tab to specified session
+```
+:bind zs set-cmd-text -s :spawn --userscript path/to/tab-manager.py /abspath/to/sessions/dir/ save -f 
+```
+- delete session
+```
+:bind zD set-cmd-text -s :spawn --userscript path/to/tab-manager.py /abspath/to/sessions/dir/ delete -f 
+```
+- open this file
+```
+:bind zh spawn --userscript path/to/tab-manager.py /abspath/to/sessions/dir/ help 
+```
+
+In the above examples. everything is bound under "z". Change the keys to your requirements, change the directories, add binds with flags as you need them, remove binds you won't use, etc. 

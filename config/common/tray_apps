@@ -1,0 +1,26 @@
+#!/bin/env python
+
+startup = [
+    ('dunst'                , '') ,
+    ('kdeconnect-indicator' , '') ,
+    ('blueman-tray'         , '') ,
+    ('udiskie'             , '-a -n -s') ,
+    ('syncthing-gtk'        , '' ) ,
+    ('copyq'                , '' ) ,
+    ('pasystray'            , '' ) ,
+    ('QOwnNotes'            , '' ) ,
+    ('redshift-gtk'         , '' ) ,
+    ('variety'              , '' ) 
+    ]
+kill = [
+    ('dunst'                , '') ,
+    ('kdeconnect-indicator' , '') ,
+    ('blueman-tray'         , '') ,
+    ('udiskie'             , '-a -n -s') ,
+    ('syncthing-gtk'        , '' ) ,
+    ('copyq'                , '' ) ,
+    ('pasystray'            , '' ) ,
+    ('QOwnNotes'            , '' ) ,
+    ('redshift-gtk'         , '' ) ,
+    ('variety'              , '' ) 
+    ]

@@ -1,0 +1,18 @@
+colors:
+  body: none
+  date: none
+  tags: none
+  title: none
+default_hour: 9
+default_minute: 0
+editor: "nvr"
+encrypt: false
+highlight: true
+indent_character: '    '
+journals:
+  default: /home/cba/sync/pkb/jrnl.md
+linewrap: 79
+tagsymbols: '@+#'
+template: false
+timeformat: '%Y-%m-%d %a %I:%M %p'
+version: v2.8.3

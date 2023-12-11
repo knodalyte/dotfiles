@@ -1,0 +1,39 @@
+### This is the bookmarks file for CliFM ###
+
+# Empty and commented lines are ommited
+# The bookmarks syntax is: [shortcut]name:path
+# Example:
+[a]/home/cba/Android Camera/
+[c]/home/cba/.config/
+[d]/home/cba/Downloads/
+[dp]/home/cba/SD/Download/
+[dt]/home/cba/Downloads/Telegram Desktop/
+[h]/home/cba/
+[ifm]fmcheat:/home/cba/sync/pkb/systems/linux/clifm cheatsheet.md
+[is]/home/cba/sync/pkb/systems/cheatsheets/
+[j]/home/cba/projects/
+[jrnlc]/home/cba/.config/jrnl/jrnl.yaml
+[kf]food]/home/cba/sync/pkb/food/
+[kg]/home/cba/sync/pkb/garden/
+[kh]/home/cba/sync/pkb/house/
+[k]/home/cba/sync/pkb/
+[kj]/home/cba/sync/pkb/jrnl/
+[kj]projects]/home/cba/sync/pkb/systems/projects/
+[kl]linux]/home/cba/sync/pkb/systems/linux/
+[kp]phone]/home/cba/sync/pkb/systems/phone/
+[kq]qtile]/home/cba/sync/pkb/systems/qtile/
+[ksf]/home/cba/sync/pkb/systems/firefox/
+[kv]vim]/home/cba/sync/pkb/systems/vim/
+[ky]python]/home/cba/sync/pkb/systems/python/
+[kz]zsh]/home/cba/sync/pkb/systems/zsh/
+[l]/home/cba/.local/
+[lb]/home/cba/.local/bin/
+[ls]/home/cba/.local/share/
+[pc]gitclifm]/home/cba/projects/clifm/
+[qc]/home/cba/.config/qtile/
+[sf]/home/cba/sync/files/
+[s]/home/cba/sync/
+[uls]ulshare]/usr/local/share/
+vc]/home/cba/.config/astronvim/
+[w]/home/cba/Windows/Users/cba/
+[zc]/home/cba/.config/zsh/

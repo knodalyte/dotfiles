@@ -1,0 +1,18 @@
+colors:
+  body: WHITE
+  date: YELLOW
+  tags: CYAN
+  title: GREEN
+default_hour: 11
+default_minute: 59
+editor: nvim
+encrypt: false
+highlight: true
+indent_character: '    '
+journals:
+  default:  /home/cba/sync/pkb/jrnl.md
+linewrap: auto
+tagsymbols: '@+#'
+template: false
+timeformat: '%Y-%m-%d %a %I:%M %p'
+version: v4.0.1

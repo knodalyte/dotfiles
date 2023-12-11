@@ -1,0 +1,489 @@
+# Start configuration added by Zim install {{{
+#
+# User configuration sourced by interactive shells
+#
+
+# -----------------
+# Zsh configuration
+# -----------------
+# zmodload zsh/zprof
+#
+# History
+#
+
+# Remove older command from the history if a duplicate is to be added.
+setopt HIST_IGNORE_ALL_DUPS
+# Do the initialization when the script is sourced (i.e. Initialize instantly)
+ZVM_INIT_MODE=sourcing
+#
+# Input/output
+#
+
+# Set editor default keymap to emacs (`-e`) or vi (`-v`)
+#bindkey -v
+
+# Prompt for spelling correction of commands.
+#setopt CORRECT
+
+# Customize spelling correction prompt.
+#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+
+# Remove path separator from WORDCHARS.
+WORDCHARS=${WORDCHARS//[\/]}
+
+# -----------------
+# Zim configuration
+# -----------------
+
+# Use degit instead of git as the default tool to install and update modules.
+#zstyle ':zim:zmodule' use 'degit'
+
+# --------------------
+# Module configuration
+# --------------------
+
+#
+# git
+#
+
+# Set a custom prefix for the generated aliases. The default prefix is 'G'.
+#zstyle ':zim:git' aliases-prefix 'g'
+
+#
+# input
+#
+
+# Append `../` to your input for each `.` you type after an initial `..`
+#zstyle ':zim:input' double-dot-expand yes
+
+#
+# termtitle
+#
+
+# Set a custom terminal title format using prompt expansion escape sequences.
+# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
+# If none is provided, the default '%n@%m: %~' is used.
+#zstyle ':zim:termtitle' format '%1~'
+
+#
+# zsh-autosuggestions
+#
+
+# Disable automatic widget re-binding on each precmd. This can be set when
+# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
+#
+# zsh-syntax-highlighting
+#
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# Customize the main highlighter styles.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
+
+ranger-fix() {
+       COLUMNS=
+       LINES=
+#       exec ranger '$@'
+       (kitty --class ranger -e ranger $@ & ) > /dev/null 2>&1
+}   
+# alias ranger='ranger-fix'
+
+# ------------------
+# Initialize modules
+# ------------------
+
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
+fi
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+
+# ------------------------------
+# Post-init module configuration
+# ------------------------------
+
+source /home/cba/.fzf/shell/key-bindings.zsh
+source /home/cba/.config/zsh/.zim/modules/zsh-fzf-history-search/zsh-fzf-history-search.zsh
+#
+# zsh-history-substring-search
+#
+
+zmodload -F zsh/terminfo +p:terminfo
+# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+#for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+# for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
+# for key ('k') bindkey -M vicmd ${key} history-substring-search-up
+# for key ('j') bindkey -M vicmd ${key} history-substring-search-down
+unset key
+# }}} End configuration added by Zim install
+#
+# setopt nopromptbang prompt{cr,percent,sp,subst}
+#
+# zstyle ':zim:prompt-pwd' git-root yes
+# zstyle ':zim:prompt-pwd:fish-style' dir-length 1
+# zstyle ':zim:prompt-pwd:separator' format '❯'
+#
+# PS1='$(prompt-pwd)❯ '
+export TYPEWRITTEN_PROMPT_LAYOUT="pure"
+alias fm='clifm'
+# don't use autocd - it interferes with clifm
+unsetopt autocd
+
+rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
+}
+
+eval "$(lesspipe)"
+
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
+#[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+alias zzz='exit'
+alias ka='k -all '
+alias aba='abbrev-alias '
+alias mm='moreman'
+alias gvim='grlrnvim'
+
+skg() {        sk    --ansi -i -c 'rg --line-number "{}"' | awk -F':' '{print "+"$2, $1}' }
+# skv() { nvim $(sk -m --ansi -i -c 'rg --line-number  "{}"'| awk -F':' '{print "+"$2, $1}') }
+skv() { nvim $(sk -m --ansi -i -c 'rg --line-number "{}"' --preview "preview.sh" | awk -F':' '{print "+"$2, $1}') }
+### vim mode in zsh
+#bindkey -v
+
+alias ls='exa'                                                          # ls
+alias l='exa -lbF --git'                                                # list, size, type, git
+alias ll='exa -lbGF --git'                                             # long list
+alias llm='exa -lbGd --git --sort=modified'                            # long list, modified date sort
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+
+# specialty views
+alias lS='exa -1'                                                              # one column, just names
+alias lt='exa --tree --level=2'                                         # tree
+alias k='k --all'
+#alias m='zfm'
+alias ma='zfm add'
+alias ml='zfm list'
+alias ms='zfm select' #Open selection menu and print selection to stdout
+alias mq='zfm query ' #<pattern> 	Print bookmark matching pattern to stdout. Selection menu will open if match is ambiguous
+bindkey -M viins "^P" zfm-cd-to-bookmark
+bindkey "^P" zfm-cd-to-bookmark
+#bindkey '^P' zfm-insert-bookmark
+# f <pattern> 	Jump to bookmark directory matching pattern, open selection if ambiguous
+#eval "$(starship init zsh)"
+# bindkey "^R" ZSH_FZF_HISTORY_SEARCH_BIND #this is not needed, plugin sets by 
+# default
+#typeset -g ZSH_FZF_HISTORY_SEARCH_BIND='^r'
+# zenburn colors 
+# Make sure the zsh/terminfo module is loaded
+(( ${+modules[zsh/terminfo]} )) || zmodload zsh/terminfo
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
+
+# use j and ji for zoxide commands:
+# eval "$(zoxide init zsh --cmd j)"
+eval "$(zoxide init zsh)"
+alias ..='cd ..'
+
+#PROMPT="%t %d %? >"
+#PROMPT='%n@%m:%15<..<%~%<<%# '
+#
+# from old .zshrc
+#
+# +------------+
+# | NAVIGATION |
+# +------------+
+
+# setopt AUTO_CD  # If a command is issued that can’t be executed as a normal command,
+                # and the command is the name of a directory, perform the cd command
+                # to that directory.
+# cdpath=($HOME/sync $HOME/.config)
+setopt AUTO_PUSHD           # Push the old directory onto the stack on cd.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+
+setopt CORRECT              # Spelling correction
+setopt CDABLE_VARS          # Change directory to a path stored in a variable.
+
+# autoload -Uz bd; bd
+
+# bindkey '^[OA' history-substring-search-up
+# bindkey '^[OB' history-substring-search-down
+# +---------+
+# | HISTORY |
+# +---------+
+
+
+# set some history options
+setopt append_history
+setopt hist_reduce_blanks
+setopt INC_APPEND_HISTORY
+unsetopt HIST_BEEP
+
+#setopt noclobber
+
+# Keep a ton of history. You can reset these without editing .zshrc by
+# adding a file to ~/.zshrc.d.
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+export HSTR_CONFIG=hicolor            # get more colors
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt HISTIGNORESPACE           # don't add commandlines that start with a space
+alias hh=hstr
+# increase history file size
+HISTFILESIZE=1000000
+# # increase history size
+HISTSIZE=${HISTFILESIZE}
+# # bind hstr-rs to CTRL + H
+# bindkey -s '^R' '^ahstr-rs -- "^e"\C-j'
+#setopt pushd_silent
+
+# Add some completions settings
+setopt ALWAYS_TO_END     # Move cursor to the end of a completed word.
+setopt AUTO_LIST         # Automatically list choices on ambiguous completion.
+setopt AUTO_MENU         # Show completion menu on a successive tab press.
+setopt AUTO_PARAM_SLASH  # If completed parameter is a directory, add a trailing slash.
+setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
+unsetopt MENU_COMPLETE   # Do not autoselect the first completion entry.
+#
+# Miscellaneous settings
+setopt INTERACTIVE_COMMENTS  # Enable comments in interactive shell.
+
+setopt extended_glob # Enable more powerful glob features
+#
+# Completion
+# Speed up autocomplete, force prefix mapping
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")'
+# zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")';
+
+setopt menu_complete # Autoselect the first suggestion
+setopt complete_in_word
+setopt no_complete_aliases # Actually: completes aliases! (I guess that means "no ~separate functions~ for aliases")
+unsetopt always_to_end
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' insert-tab pending
+zstyle ':completion:*' expand "yes"
+zstyle ':completion:*' matcher-list "m:{a-zA-Z}={A-Za-z}" # ignore case
+zstyle ':completion:*' list-colors ""
+zstyle ':completion:*' menu select=2 _complete _ignored _approximate
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*:prefix:*' add-space true
+zstyle ':completion:*:descriptions' format "|| %{${fg[yellow]}%}%d%{${reset_color}%}"
+zstyle ':completion:*:messages' format $'\e[00;31m%d'
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:rm:*' ignore-line yes
+zstyle ':completion:*:*:*:processes' list-colors "=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01"
+zstyle ':completion:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+# zstyle ':completion:*:*:*:*:hosts' list-colors "=*=$color[cyan];$color[bg-black]"
+zstyle ':completion:*:functions' ignored-patterns "_*"
+# zstyle ':completion:*:original' list-colors "=*=$color[red];$color[bold]"
+# zstyle ':completion:*:parameters' list-colors "=[^a-zA-Z]*=$color[red]"
+# zstyle ':completion:*:aliases' list-colors "=*=$color[green]"
+
+# Long running processes should return time after they complete. Specified
+# in seconds.
+REPORTTIME=2
+TIMEFMT="%U user %S system %P cpu %*Es total"
+
+# Expand aliases inline - see http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
+# globalias() {
+#    if [[ $LBUFFER =~ ' [A-Z0-9]+$' ]]; then
+#      zle _expand_alias
+#      zle expand-word
+#    fi
+#    zle self-insert
+# }
+
+# zle -N globalias
+
+# bindkey " " globalias
+bindkey "^ " magic-space           # control-space to bypass completion
+bindkey -M isearch " " magic-space # normal space during searches
+
+# source /home/cba/.config/zsh/.zim/modules/fuzzy-fs/fuzzy-fs
+# Use fd and fzf to get the args to a command.
+# Works only with zsh
+# Examples:
+# f mv # To move files. You can write the destination after selecting the files.
+# f 'echo Selected:'
+# f 'echo Selected music:' --extension mp3
+# fm rm # To rm files in current directory
+f() {
+    sels=( "${(@f)$(fd "${fd_default[@]}" "${@:2}"| fzf)}" )
+    test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
+}
+
+# Like f, but not recursive.
+f1() f "$@" --max-depth 1
+
+# Deps
+alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
+fzf-noempty () {
+	local in="$(</dev/stdin)"
+	test -z "$in" && (
+		exit 130
+	) || {
+		ec "$in" | fzf "$@"
+	}
+}
+ec () {
+	if [[ -n $ZSH_VERSION ]]
+	then
+		print -r -- "$@"
+	else
+		echo -E -- "$@"
+	fi
+}
+# Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+#vim $(find . -name "*.rs" | sk -m)
+
+# fuzzy grep open via ag
+fg() {
+  local file
+
+  file="$(ag --nobreak --noheading $@ | fzf -0 -1 | awk -F: '{print $1}')"
+
+  if [[ -n $file ]]
+  then
+     nvim $file
+  fi
+}
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+# Modified version where you can press
+#   - CTRL-O to open with `open` command,
+#   - CTRL-E or Enter key to open with the $EDITOR
+fo() {
+  IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+  fi
+}
+
+# zstyle ':autocomplete:*' fzf-completion yes
+# bindkey '^I' fzf_completion
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath' # remember to use single quote here!!!
+# autoload -U zsh-mime-setup
+# zsh-mime-setup
+
+# cmd fzf_jump ${{
+#     res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+#     if [ -d "$res" ] ; then
+#         cmd="cd"
+#     elif [ -f "$res" ] ; then
+#         cmd="select"
+#     else
+#         exit 0
+#     fi
+#     lf -remote "send $id $cmd \"$res\""
+# }}
+# map <c-f> :fzf_jump
+#
+# cmd fzf_search ${{
+#     res="$( \
+#         RG_PREFIX="rg --column --line-number --no-heading --color=always \
+#             --smart-case "
+#         FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+#             fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+#             --ansi --layout=reverse --header 'Search in files' \
+#             | cut -d':' -f1
+#     )"
+#     [ ! -z "$res" ] && lf -remote "send $id select \"$res\""
+# }}
+# map gs :fzf_search
+#
+# config.bind(',l', 'spawn --userscript qute-bitwarden')
+
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+alias nvim-cba="NVIM_APPNAME=nvim-cba nvim"
+alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+alias nvim-chad="NVIM_APPNAME=nvchad nvim"
+
+function nvims() {
+  items=("default" "cba" "LazyVim" "AstroNvim" "nvchad")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
+# bindkey -s "^a" "nvims\n"
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath' # remember to use single quote here!!!
+alias fuz='/home/cba/projects/fuz/fuz --path "/home/cba/sync/pkb"'
+
+source $ZDOTDIR/chezmoi.zsh
+# zprof
+
