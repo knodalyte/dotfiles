@@ -1,11 +1,55 @@
+- defaults:
+    link:
+      relink: true
+
 - clean: ['~']
 
 - link:
+    ~/.bashrc: bashrc
+    ~/.zshrc: zshrc
+    ~/.vimrc: vimrc
     ~/.profile: profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.vimrc: vimrc
     ~/.zshenv: zshenv
     ~/.Xresources: Xresources
+    ~/.config/astronvim
+    ~/.profile
+    ~/.config/autorunner:
+    ~/.config/clifm:
+    ~/.config/clipcat:
+    ~/.config/common:
+    ~/.config/ctags:
+    ~/.config/i3:
+    ~/.config/kitty:
+    ~/.config/manuskript:
+    ~/.config/mimi:
+    ~/.config/PBE:
+    ~/.config/qtile:
+    ~/.config/ranger:
+    ~/.config/rofi:
+    ~/.config/xorg.conf.d:
+    ~/.config/yazi:
+    ~/.config/mc:
+    ~/.config/jrnl:
+    ~/.config/qutebrowser:
+    ~/.config/user-dirs.locale 
+    ~/.config/zsh/abbreviations
+    ~/.config/zsh/.zimrc
+    ~/.config/zsh/.zlogin
+    ~/.config/zsh/.zprofile
+    ~/.config/zsh/fzf-key-bindings.zsh
+    ~/.config/zsh/.p10k.zsh
+    ~/.config/zsh/ov.zsh
+    ~/.config/zsh/.zsh_aliases-quickstart
+    ~/.config/zsh/.zsh_functions
+    ~/.config/zsh/.zshrc
 
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+# the following have to run after linking ~/.gitconfig
+    - git update-submodule
+    - [chsh -s $(which zsh), Making zsh the default shell]
+    - sudo ./install -p plugins/dotbot-apt/apt.py -c packages.conf.yaml
