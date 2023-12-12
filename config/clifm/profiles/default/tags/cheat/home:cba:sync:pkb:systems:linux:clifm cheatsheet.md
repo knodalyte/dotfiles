@@ -1,1 +1,0 @@
-/home/cba/sync/pkb/systems/linux/clifm cheatsheet.md

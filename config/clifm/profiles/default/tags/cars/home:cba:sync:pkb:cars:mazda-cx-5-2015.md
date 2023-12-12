@@ -1,1 +1,0 @@
-/home/cba/sync/pkb/cars/mazda-cx-5-2015.md
